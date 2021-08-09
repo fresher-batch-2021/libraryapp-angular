@@ -8,6 +8,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { InitialpageComponent } from './initialpage/initialpage.component';
 import { BooksComponent } from './books/books.component';
+import { FormsModule } from '@angular/forms';
+import { PlaceorderComponent } from './placeorder/placeorder.component';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,12 @@ import { BooksComponent } from './books/books.component';
     RegisterComponent,
     LoginComponent,
     InitialpageComponent,
-    BooksComponent
+    BooksComponent,
+    PlaceorderComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

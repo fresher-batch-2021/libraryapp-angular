@@ -19,7 +19,19 @@
 
             </tr>
         </thead>
-        <tbody id="book"> </tbody>
+        <tbody> 
+
+            <tr  *ngFor="let bookobj of books">
+                <td>{{bookobj.id}}</td>
+                <td>{{bookobj.bookname}}</td>
+                <td>{{bookobj.authorname}}</td>
+                <td>{{bookobj.category}}</td>
+                <td>{{bookobj.price}}</td>
+                <td>{{bookobj.quantity}}</td>
+
+
+            </tr>
+        </tbody>
 
     </table>
     <div class='orderbooks'>

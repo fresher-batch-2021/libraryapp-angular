@@ -11,5 +11,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  email: string = "";
+  password: string = "";
+  login() {
+    if (this.email == "") {
+      alert("Email cannot be empty");
+    }
+    else if (this.password == "") {
+      alert("password cannot be empty");
+    } else {
+      alert("login successful");
+      window.location.href = "initial-page"
+    }
+  }
 }
+

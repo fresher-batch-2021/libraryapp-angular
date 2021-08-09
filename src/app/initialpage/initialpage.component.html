@@ -1,1 +1,10 @@
-<p>initialpage works!</p>
+<div class="row" id="books" *ngFor="let bookObj of books">
+    <div class="card">
+        <h1 class="initial-page-h1">{{bookObj.bookname}} </h1>
+        <h4 class="initial-page-h4">{{bookObj.authorname}}</h4>
+        {{bookObj.category}}
+        <a  routerLink="../viewbook/{{bookObj.id}}">view</a>
+
+<img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="">
+
+</div> 
