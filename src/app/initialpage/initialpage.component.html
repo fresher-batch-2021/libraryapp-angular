@@ -1,10 +1,11 @@
-<div class="row" id="books" *ngFor="let bookObj of books">
+<div class="row">
+
+<div id="books" *ngFor="let bookObj of books">
     <div class="card">
-        <h1 class="initial-page-h1">{{bookObj.bookname}} </h1>
-        <h4 class="initial-page-h4">{{bookObj.authorname}}</h4>
-        {{bookObj.category}}
-        <a  routerLink="../viewbook/{{bookObj.id}}">view</a>
+        <h1 class="initial-page-h1">{{bookObj.bookName}} </h1>
+        <h4 class="initial-page-h4">{{bookObj.authorName}}</h4>
+        <img class='initial-page-img' src="assets/images/{{bookObj.image}}" alt="image not found" />
 
-<img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="">
-
-</div> 
+    </div>
+</div>
+</div>

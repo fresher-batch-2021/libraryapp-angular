@@ -1,0 +1,28 @@
+<h1 class="add-book-h1">Add Books</h1>
+<div class='book-container'>
+    <form (ngSubmit)="addBook()">
+        <div class="add-book">
+
+            <label class="add-book-label" for="bookName">BookName:</label>
+            <input class="add-book-input" [(ngModel)]="bookName" type="text" name="bookName" id="bookName">
+            <label class="add-book-label" for="author">AuthorName:</label>
+            <input class="add-book-input"  [(ngModel)]="authorName" type="text" name="author" id="author">
+
+            <label class="add-book-label" for="quantity">Quantity:</label>
+            <input class="add-book-input"  [(ngModel)]="quantity" type="text" name="quantity" id="quantity">
+            <label class="add-book-label" for="Price">Price:</label>
+            <input class="add-book-input"   [(ngModel)]="price"type="text" name="Price" id="price">
+            <label class="add-book-label" for="category">Category:</label>
+            <input class="add-book-input"  [(ngModel)]="category" type="text" name="category" id="category">
+            <label class="add-book-label" for="image">Image</label>
+            <input class="add-book-input"[(ngModel)]="image"  type="text" id="file" name="image">
+        </div>
+
+        <div>
+            <button class="add-book-button">Add</button>
+
+        </div>
+
+    </form>
+
+</div>

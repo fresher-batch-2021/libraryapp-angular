@@ -14,6 +14,7 @@ body{
     padding: 8px;
     border:3px;
     text-decoration: none;
+    color:black;
 
 }
 .logo:hover{
@@ -23,6 +24,7 @@ body{
 
 }
 .nav-item{
+    color:black;
     border:3px;
     margin-left:57rem;
     text-decoration: none;
@@ -30,12 +32,14 @@ body{
 
     } 
     .nav-item:hover{
+        color:black;
         background-color:#f1f1f1;
         border-radius: 0;
         color:black;
     }
     .nav-items{
         padding:8px;
+        color:black;
         margin-left:50px;
         text-decoration: none;
 
@@ -171,10 +175,7 @@ th {
 
 }
 
-a {
-    border: 10px;
-    color: black;
-}
+
 
 .order-button {
     padding: 10px;
@@ -182,6 +183,7 @@ a {
     border-radius: 5px;
     border: none;
     text-transform: capitalize;
+    margin:15px;
 }
 
 .order-button:hover {
@@ -189,7 +191,9 @@ a {
     background-color: blue;
 
 }
-
+.books-a{
+    margin:50px;
+}
 
 .search-input {
     width: 30%;
@@ -237,4 +241,73 @@ caption {
 
 .card:hover {
     transform: translateY(-20px)
+}
+
+/* orderpage */
+.order-div1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:400px;
+    width: 50%;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: #f1f1f1;
+
+}
+.order-div2{
+    margin-left:90px;
+}
+
+
+.placeorder-button{
+    padding:10px;
+    background-color: blue;
+    color:white;
+    cursor:pointer;
+    margin-top:40px;
+}
+
+/* addbook */
+.book-container{
+    margin-left: 200px;
+    display: flex;
+    justify-content: center;
+   background-color: #cccccc;  
+   border:1px solid;
+   padding: 20px;
+   width:60%
+}
+.add-book-h1{
+    display: flex;
+    justify-content: center;
+}
+.add-book{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+.add-book-label{
+    margin:20px;
+}
+.add-book-input {
+    padding: 10px;
+    margin:10px;
+    border:none;
+}
+.add-book-input:focus{
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;  
+}
+
+.add-book-button {
+    margin:40px 0 0 100px;
+    padding: 15px;
+    width: 90px;
+    cursor: pointer;
+    color:white;
+    background-color: blue;
+    width:50%;
+    border-radius:28px;
 }

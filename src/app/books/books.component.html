@@ -21,12 +21,12 @@
         </thead>
         <tbody> 
 
-            <tr  *ngFor="let bookobj of books">
-                <td>{{bookobj.id}}</td>
-                <td>{{bookobj.bookname}}</td>
-                <td>{{bookobj.authorname}}</td>
+            <tr  *ngFor="let bookobj of books;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{bookobj.bookName}}</td>
+                <td>{{bookobj.authorName}}</td>
                 <td>{{bookobj.category}}</td>
-                <td>{{bookobj.price}}</td>
+                <td>Rs:{{bookobj.price}}</td>
                 <td>{{bookobj.quantity}}</td>
 
 
@@ -43,7 +43,7 @@
             <button class="order-button"> user books</button>
 
         </a>
-        <a href="addbook.html" class="books-a">
+        <a routerLink="/add-book" class="books-a">
             <button class="order-button">Add books</button>
 
         </a>

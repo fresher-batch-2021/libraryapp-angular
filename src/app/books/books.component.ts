@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import axios from 'axios';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -10,13 +10,17 @@ export class BooksComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.allBooks();
   }
-books=[
-  {
-    id:1,bookname:"book1",authorname:"author1",category:"category1",price:"100",quantity:"10"  },
-    {
-      id:1,bookname:"book1",authorname:"author1",category:"category1",price:"100",quantity:"10"  },
-      {
-        id:1,bookname:"book1",authorname:"author1",category:"category1",price:"100",quantity:"10"  }
-]
+  books:any;
+
+  allBooks(){
+   let i=1;
+  const url="http://localhost:8000/book/get-all-books";
+  axios.post(url).then(res=> {
+    console.log(res.data)
+    this.books = res.data;
+  })
+  .catch(err=>{alert(err.data)})
+}
 }

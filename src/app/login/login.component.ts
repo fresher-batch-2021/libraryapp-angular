@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import axios from 'axios';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,8 +20,23 @@ export class LoginComponent implements OnInit {
     else if (this.password == "") {
       alert("password cannot be empty");
     } else {
-      alert("login successful");
-      window.location.href = "initial-page"
+      let url="http://localhost:8000/users/login";
+      let userData={
+        email:this.email,
+        password:this.password
+      }
+      axios.post(url,userData).then(res=>{
+        const data=res.data
+        console.log(data);
+        alert(data.message);
+        if(data.message==="login successfull"){
+          window.location.href="initial-page"
+        }
+      }).catch(err=>{
+        console.log(err.response.data);
+        let errorMessage = err.response.data.errorMessage;
+        alert("Error:" + errorMessage);
+      })
     }
   }
 }
