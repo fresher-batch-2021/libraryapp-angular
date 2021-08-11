@@ -1,0 +1,32 @@
+<div>
+    <div class="search">
+        <input type="text" class="search-input" name="search" id="search" placeholder="Search...">
+        <br>
+    </div>
+
+    <table>
+        <caption>BOOKS</caption>
+
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">UserName</th>
+                <th scope="col">BookName</th>
+                <th scope="col">TakenDate</th>
+                <th scope="col">ReturnDate</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let orderObj of orders ;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{orderObj.userId.name}}</td>
+                <td>{{orderObj.bookId.bookName}}</td>
+                <!-- <td>{{new Date(orderObj.orderDate).toJSON().subStr(0,10)}}</td> -->
+                <td>{{orderObj.orderDate| date: 'yyyy-MM-dd'}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

@@ -11,6 +11,8 @@ import { BooksComponent } from './books/books.component';
 import { FormsModule } from '@angular/forms';
 import { PlaceorderComponent } from './placeorder/placeorder.component';
 import { AddbookComponent } from './addbook/addbook.component';
+import { EditbookComponent } from './editbook/editbook.component';
+import { AllordersComponent } from './allorders/allorders.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AddbookComponent } from './addbook/addbook.component';
     InitialpageComponent,
     BooksComponent,
     PlaceorderComponent,
-    AddbookComponent
+    AddbookComponent,
+    EditbookComponent,
+    AllordersComponent
   ],
   imports: [
     BrowserModule,

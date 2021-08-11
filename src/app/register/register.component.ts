@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       axios.post(url, userData).then(res=>{
         const data = res.data;
         console.log(data);
-        alert("Success");
+        alert(res.data.message);
         window.location.href = "login";
       }).catch(err=>{
         console.error(err.response.data);

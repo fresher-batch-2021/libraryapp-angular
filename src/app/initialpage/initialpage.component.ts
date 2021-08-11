@@ -14,8 +14,11 @@ export class InitialpageComponent implements OnInit {
   }
 
   books:any;
-
+userStr:any;
   allBooks(){
+    const userStr=localStorage.getItem("user");
+    const data =userStr != null ? JSON.parse(userStr) : [];
+    console.log(data);
   const url="http://localhost:8000/book/get-all-books";
   axios.post(url).then(res=> {
     console.log(res.data)

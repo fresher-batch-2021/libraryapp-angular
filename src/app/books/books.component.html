@@ -15,36 +15,34 @@
                 <th scope="col">Category</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
+                <th scope="col"> Actions</th>
 
 
             </tr>
         </thead>
-        <tbody> 
+        <tbody>
 
-            <tr  *ngFor="let bookobj of books;let i=index">
+            <tr *ngFor="let bookobj of books;let i=index">
                 <td>{{i+1}}</td>
                 <td>{{bookobj.bookName}}</td>
                 <td>{{bookobj.authorName}}</td>
                 <td>{{bookobj.category}}</td>
                 <td>Rs:{{bookobj.price}}</td>
                 <td>{{bookobj.quantity}}</td>
-
-
+                <a class="book-anchor" routerLink="/edit-book/{{bookobj._id}}">Edit</a>&nbsp;<a class="book-anchor"
+                    routerLink="delete-book">Delete</a>
             </tr>
         </tbody>
 
     </table>
-    <div class='orderbooks'>
-        <a href="ordered.html " class="books-a">
-            <button class="order-button">ordered books</button>
 
-        </a>
-        <a href="buyedbooks.html" class="books-a">
+    <div class='orderbooks'>
+        <a routerLink="/all-orders" class="books-a">
             <button class="order-button"> user books</button>
 
         </a>
         <a routerLink="/add-book" class="books-a">
-            <button class="order-button">Add books</button>
+            <button class="order-button">Add book</button>
 
         </a>
 

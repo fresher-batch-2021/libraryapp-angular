@@ -1,0 +1,28 @@
+<h1 class="add-book-h1">Edit Book</h1>
+<div class='book-container'>
+    <form (ngSubmit)="editBook()">
+        <div class="add-book" *ngIf="book">
+
+            <label class="add-book-label" for="bookName">BookName:</label>
+            <input class="add-book-input"  type="text" name="bookName" id="bookName" [(ngModel)]="book.bookName">
+            <label class="add-book-label" for="author">AuthorName:</label>
+            <input class="add-book-input"  type="text" name="author" id="author" [(ngModel)]="book.authorName">
+
+            <label class="add-book-label" for="quantity">Quantity:</label>
+            <input class="add-book-input"   type="text" name="quantity" id="quantity" [(ngModel)]="book.quantity">
+            <label class="add-book-label" for="Price">Price:</label>
+            <input class="add-book-input"   type="text" name="Price" id="price" [(ngModel)]="book.price">
+            <label class="add-book-label" for="category">Category:</label>
+            <input class="add-book-input"   type="text" name="category" id="category" [(ngModel)]="book.category">
+            <label class="add-book-label" for="image">Image</label>
+            <input class="add-book-input" type="text" id="file" name="image" [(ngModel)]="book.image">
+        </div>
+
+        <div>
+            <button class="add-book-button">Add</button>
+
+        </div>
+
+    </form>
+
+</div>

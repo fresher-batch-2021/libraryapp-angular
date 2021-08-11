@@ -20,19 +20,22 @@ export class LoginComponent implements OnInit {
     else if (this.password == "") {
       alert("password cannot be empty");
     } else {
-      let url="http://localhost:8000/users/login";
-      let userData={
-        email:this.email,
-        password:this.password
+      let url = "http://localhost:8000/users/login";
+      let userData = {
+        email: this.email,
+        password: this.password
       }
-      axios.post(url,userData).then(res=>{
-        const data=res.data
+      axios.post(url, userData).then(res => {
+        let user = res.data.userData
+        localStorage.setItem('user', JSON.stringify(user));
+        console.log(user)
+        const data = res.data
         console.log(data);
         alert(data.message);
-        if(data.message==="login successfull"){
-          window.location.href="initial-page"
+        if (data.message === "login successfull") {
+          window.location.href = "initial-page"
         }
-      }).catch(err=>{
+      }).catch(err => {
         console.log(err.response.data);
         let errorMessage = err.response.data.errorMessage;
         alert("Error:" + errorMessage);
