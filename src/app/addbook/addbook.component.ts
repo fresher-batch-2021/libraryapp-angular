@@ -18,8 +18,18 @@ export class AddbookComponent implements OnInit {
   price: string = "";
   category: string = "";
   image: string = "";
+  description:string="";
+  createdby:any;
   addBook() {
-
+    const userStr = localStorage.getItem("user");
+    if(userStr == null){
+      alert("Please Login");
+      //redirect
+    }
+    
+    const loggedInUser =userStr != null ? JSON.parse(userStr): null ;
+    const createdby=loggedInUser.user_id
+    console.log(createdby);
     if (this.bookName == null || this.bookName == "") {
       alert("Enter the BookName");
     }
@@ -35,6 +45,9 @@ export class AddbookComponent implements OnInit {
     else if (this.category == null || this.category == "") {
       alert("Enter the category of the book");
     }
+    else if (this.description == null || this.description == "") {
+      alert("Enter the description of the book");
+    }
     else {
     
     const details = {
@@ -43,9 +56,11 @@ export class AddbookComponent implements OnInit {
       "quantity": this.quantity,
       "price": this.price,
       "category": this.category,
-      "image": this.image
+      "image": this.image,
+      "description":this.description,
+      "createdby":createdby
     }
-    console.log(details);
+    console.log(JSON.stringify(details));
 
     const url = ('http://localhost:8000/book/add-book');
     axios.post(url, details).then(res => {

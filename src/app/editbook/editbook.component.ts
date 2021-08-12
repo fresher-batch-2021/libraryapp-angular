@@ -23,7 +23,7 @@ export class EditbookComponent implements OnInit {
   price: string = "";
   category: string = "";
   image: string = "";
-  
+  description:string="";
   editBook(){
     console.log(this.bookId);
     const url = ('http://localhost:8000/book/update-book/' + this.bookId);
@@ -36,7 +36,6 @@ export class EditbookComponent implements OnInit {
   loadBook(){
     
     const url = ('http://localhost:8000/book/get-book-by-id/' + this.bookId);
-    const _id=this.bookId
     axios.get(url).then(res => {
       console.log(res)
       this.book = res.data;

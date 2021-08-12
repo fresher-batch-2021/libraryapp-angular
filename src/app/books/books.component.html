@@ -16,6 +16,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col"> Actions</th>
+                <th scope="col"> Status</th>
 
 
             </tr>
@@ -29,8 +30,13 @@
                 <td>{{bookobj.category}}</td>
                 <td>Rs:{{bookobj.price}}</td>
                 <td>{{bookobj.quantity}}</td>
-                <a class="book-anchor" routerLink="/edit-book/{{bookobj._id}}">Edit</a>&nbsp;<a class="book-anchor"
-                    routerLink="delete-book">Delete</a>
+                <a class="book-anchor" routerLink="/edit-book/{{bookobj._id}}">Edit</a>&nbsp;<button (click)="deleteBook(bookobj)">delete</button>
+                    <td>
+
+                        <button *ngIf="bookobj.status=='InActive'" (click)="updateBookStatus(bookobj,'Active')">Activate</button>
+                        <button *ngIf="bookobj.status=='Active'" (click)="updateBookStatus(bookobj,'InActive')">InActivate</button>
+
+                    </td>
             </tr>
         </tbody>
 

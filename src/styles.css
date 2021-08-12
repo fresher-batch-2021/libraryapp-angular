@@ -298,14 +298,14 @@ caption {
 }
 .add-book{
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
 }
 .add-book-label{
     margin:20px;
 }
 .add-book-input {
     padding: 10px;
-    margin:10px;
+    margin:10px 0 10px 10px;
     border:none;
 }
 .add-book-input:focus{
@@ -317,10 +317,16 @@ caption {
 .add-book-button {
     margin:40px 0 0 100px;
     padding: 15px;
-    width: 90px;
     cursor: pointer;
     color:white;
     background-color: blue;
     width:50%;
     border-radius:28px;
+}
+textarea{
+    resize:none;
+}
+.add-book-textarea{
+    display: inline-block;
+    justify-content: center;
 }
