@@ -9,6 +9,20 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  isLoggedIn = false;
   ngOnInit(): void {
+    this.userDetails();
+  }
+  user:any;
+  userDetails(){
+    const userStr=localStorage.getItem('user');
+    this.user = userStr != null ? JSON.parse(userStr) : null;
+    if(this.user ){
+      this.isLoggedIn = true;
+    }
+  }
+  logout(){
+    const logout=localStorage.removeItem('user');
+    window.location.href="login"
   }
 }

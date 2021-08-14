@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { InitialpageComponent } from './initialpage/initialpage.component';
 import { BooksComponent } from './books/books.component';
 import { FormsModule } from '@angular/forms';
-import { PlaceorderComponent } from './placeorder/placeorder.component';
 import { AddbookComponent } from './addbook/addbook.component';
 import { EditbookComponent } from './editbook/editbook.component';
 import { AllordersComponent } from './allorders/allorders.component';
@@ -22,7 +21,6 @@ import { AllordersComponent } from './allorders/allorders.component';
     LoginComponent,
     InitialpageComponent,
     BooksComponent,
-    PlaceorderComponent,
     AddbookComponent,
     EditbookComponent,
     AllordersComponent

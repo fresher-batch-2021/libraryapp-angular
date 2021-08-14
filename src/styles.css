@@ -155,6 +155,8 @@ td {
     border-collapse: collapse;
     padding: 10px;
     text-align: center;
+    text-transform: capitalize;
+
 }
 
 .search {
@@ -172,7 +174,6 @@ th {
     border-collapse: collapse;
     padding: 10px;
     text-align: center;
-
 }
 
 
@@ -223,7 +224,12 @@ caption {
     border:10px;
     margin-top:100px; 
 }
-
+.delete-book-button{
+    cursor: pointer;
+}
+.status-button{
+    cursor: pointer;
+}
 /* initialpage */
 
 .row {

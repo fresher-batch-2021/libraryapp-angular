@@ -1,12 +1,12 @@
-<header id ='header'>
-    <nav class='navbar'>
-            <a class='logo' href="index.html"> Library</a>
-                    <a class='nav-item' routerLink="login">Login</a>
-                    <a class='nav-items' routerLink="register">Register</a> 
-                    <a class='nav-items' routerLink="initial-page">AllBooks</a> 
-                    <a class='nav-items' routerLink="books">Books</a> 
+<header id='header'>
+        <nav class='navbar' >
+                <a class='logo' href="index.html"> Library</a>
+                <a class='nav-item' routerLink="login" *ngIf="!isLoggedIn">Login</a>
+                <a class='nav-items' routerLink="register" *ngIf="!isLoggedIn">Register</a>
+                <a class='nav-items' routerLink="initial-page" *ngIf="isLoggedIn">AllBooks</a>
+                <a class='nav-items' *ngIf="isLoggedIn" routerLink="books">Books</a>
+                <a routerLink="login" *ngIf="isLoggedIn" (click)="logout()">logout</a>
 
-                             
-    </nav>
-    
-  </header>
+
+        </nav>
+</header>

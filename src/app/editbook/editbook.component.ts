@@ -8,10 +8,10 @@ import axios from 'axios';
 })
 export class EditbookComponent implements OnInit {
 
-  bookId:number;
+  bookId: number;
 
-  constructor(private route:ActivatedRoute) { 
-    this.bookId = this.route.snapshot.params["id"]; 
+  constructor(private route: ActivatedRoute) {
+    this.bookId = this.route.snapshot.params["id"];
   }
 
   ngOnInit(): void {
@@ -23,22 +23,25 @@ export class EditbookComponent implements OnInit {
   price: string = "";
   category: string = "";
   image: string = "";
-  description:string="";
-  editBook(){
+  description: string = "";
+  editBook() {
     console.log(this.bookId);
     const url = ('http://localhost:8000/book/update-book/' + this.bookId);
-    axios.put(url,this.book).then(res => {
+    axios.put(url, this.book).then(res => {
       console.log(res)
+      window.location.href="books"
+
     }).catch(err => alert("Enter the correct details"))
   }
 
-  book:any;
-  loadBook(){
-    
+  book: any;
+  loadBook() {
+
     const url = ('http://localhost:8000/book/get-book-by-id/' + this.bookId);
     axios.get(url).then(res => {
       console.log(res)
       this.book = res.data;
+
     }).catch(err => alert("Enter the correct details"))
   }
 }

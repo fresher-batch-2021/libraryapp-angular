@@ -18,17 +18,16 @@ export class AddbookComponent implements OnInit {
   price: string = "";
   category: string = "";
   image: string = "";
-  description:string="";
-  createdby:any;
+  description: string = "";
+  createdby: any;
   addBook() {
     const userStr = localStorage.getItem("user");
-    if(userStr == null){
+    if (userStr == null) {
       alert("Please Login");
-      //redirect
     }
-    
-    const loggedInUser =userStr != null ? JSON.parse(userStr): null ;
-    const createdby=loggedInUser.user_id
+
+    const loggedInUser = userStr != null ? JSON.parse(userStr) : null;
+    const createdby = loggedInUser.user_id
     console.log(createdby);
     if (this.bookName == null || this.bookName == "") {
       alert("Enter the BookName");
@@ -49,24 +48,25 @@ export class AddbookComponent implements OnInit {
       alert("Enter the description of the book");
     }
     else {
-    
-    const details = {
-      "bookName": this.bookName,
-      "authorName": this.authorName,
-      "quantity": this.quantity,
-      "price": this.price,
-      "category": this.category,
-      "image": this.image,
-      "description":this.description,
-      "createdby":createdby
-    }
-    console.log(JSON.stringify(details));
 
-    const url = ('http://localhost:8000/book/add-book');
-    axios.post(url, details).then(res => {
-      console.log(res.data)
-      alert(res.data)
-    }).catch(err => alert("Enter the correct details"))
+      const details = {
+        "bookName": this.bookName,
+        "authorName": this.authorName,
+        "quantity": this.quantity,
+        "price": this.price,
+        "category": this.category,
+        "image": this.image,
+        "description": this.description,
+        "createdby": createdby
+      }
+      console.log(JSON.stringify(details));
+
+      const url = ('http://localhost:8000/book/add-book');
+      axios.post(url, details).then(res => {
+        console.log(res.data)
+        alert(res.data)
+        window.location.href="books"
+      }).catch(err => alert({err:err.response}))
+    }
   }
-}
 }

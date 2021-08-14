@@ -24,22 +24,22 @@ export class RegisterComponent implements OnInit {
     }
     else {
       let url = "http://localhost:8000/users/addUser";
-      let userData = { 
+      let userData = {
         name: this.name,
         email: this.email,
         password: this.password
       }
-      axios.post(url, userData).then(res=>{
+      axios.post(url, userData).then(res => {
         const data = res.data;
         console.log(data);
         alert(res.data.message);
         window.location.href = "login";
-      }).catch(err=>{
+      }).catch(err => {
         console.error(err.response.data);
         let errorMessage = err.response.data.errorMessage;
         alert("Error:" + errorMessage);
       });
-      
+
     }
   }
 }

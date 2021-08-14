@@ -30,13 +30,18 @@
                 <td>{{bookobj.category}}</td>
                 <td>Rs:{{bookobj.price}}</td>
                 <td>{{bookobj.quantity}}</td>
-                <a class="book-anchor" routerLink="/edit-book/{{bookobj._id}}">Edit</a>&nbsp;<button (click)="deleteBook(bookobj)">delete</button>
-                    <td>
+                <td>
+                <a class="book-anchor" routerLink="/edit-book/{{bookobj._id}}">Edit</a>&nbsp;<button class="delete-book-button"
+                    (click)="deleteBook(bookobj)">Delete</button>
+                </td>
+                <td>
 
-                        <button *ngIf="bookobj.status=='InActive'" (click)="updateBookStatus(bookobj,'Active')">Activate</button>
-                        <button *ngIf="bookobj.status=='Active'" (click)="updateBookStatus(bookobj,'InActive')">InActivate</button>
+                    <button class="status-button" *ngIf="bookobj.status=='InActive'"
+                        (click)="updateBookStatus(bookobj,'Active')">Activate</button>
+                    <button *ngIf="bookobj.status=='Active'"
+                        (click)="updateBookStatus(bookobj,'InActive')">InActivate</button>
 
-                    </td>
+                </td>
             </tr>
         </tbody>
 
@@ -44,7 +49,7 @@
 
     <div class='orderbooks'>
         <a routerLink="/all-orders" class="books-a">
-            <button class="order-button"> user books</button>
+            <button class="order-button">Ordered Books</button>
 
         </a>
         <a routerLink="/add-book" class="books-a">

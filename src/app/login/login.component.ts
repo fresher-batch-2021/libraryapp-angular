@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         const data = res.data
         console.log(data);
         alert(data.message);
-        if (data.message === "login successfull") {
+        if (data.message === "login successful") {
           window.location.href = "initial-page"
         }
       }).catch(err => {

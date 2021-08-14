@@ -4,27 +4,31 @@
         <div class="add-book">
 
             <label class="add-book-label" for="bookName">BookName:</label>
-            <input class="add-book-input" [(ngModel)]="bookName" type="text" name="bookName" id="bookName" autocomplete="off">
+            <input class="add-book-input" [(ngModel)]="bookName" type="text" name="bookName" id="bookName"
+                autocomplete="off">
             <label class="add-book-label" for="author">AuthorName:</label>
-            <input class="add-book-input"  [(ngModel)]="authorName" type="text" name="author" id="author"autocomplete="off">
+            <input class="add-book-input" [(ngModel)]="authorName" type="text" name="author" id="author"
+                autocomplete="off">
 
             <label class="add-book-label" for="quantity">Quantity:</label>
-            <input class="add-book-input"  [(ngModel)]="quantity" type="text" name="quantity" id="quantity"autocomplete="off">
+            <input class="add-book-input" [(ngModel)]="quantity" type="text" name="quantity" id="quantity"
+                autocomplete="off">
             <label class="add-book-label" for="Price">Price:</label>
-            <input class="add-book-input"   [(ngModel)]="price"type="text" name="Price" id="price"autocomplete="off">
+            <input class="add-book-input" [(ngModel)]="price" type="text" name="Price" id="price" autocomplete="off">
             <label class="add-book-label" for="category">Category:</label>
-            <input class="add-book-input"  [(ngModel)]="category" type="text" name="category" id="category"autocomplete="off">
+            <input class="add-book-input" [(ngModel)]="category" type="text" name="category" id="category"
+                autocomplete="off">
             <label class="add-book-label" for="image">Image</label>
-            <input class="add-book-input"[(ngModel)]="image"  type="text" id="file" name="image"autocomplete="off">
+            <input class="add-book-input" [(ngModel)]="image" type="text" id="file" name="image" autocomplete="off">
             <div class="add-book-textarea">
-                <label for="description" class="add-book-label" >Description:</label>
-                <textarea name="description" class="add-book-input" id="description" cols="30" rows="10" [(ngModel)]="description"autocomplete="off">Description</textarea>
+                <label for="description" class="add-book-label">Description:</label>
+                <textarea name="description" class="add-book-input" id="description" cols="30" rows="10"
+                    [(ngModel)]="description" autocomplete="off">Description</textarea>
             </div>
         </div>
 
         <div>
             <button class="add-book-button">Add</button>
-
         </div>
 
     </form>

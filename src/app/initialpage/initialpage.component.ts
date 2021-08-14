@@ -13,18 +13,18 @@ export class InitialpageComponent implements OnInit {
     this.allBooks();
   }
 
-  books:any;
-userStr:any;
-  allBooks(){
-    const userStr=localStorage.getItem("user");
-    const data =userStr != null ? JSON.parse(userStr) : [];
+  books: any;
+  userStr: any;
+  allBooks() {
+    const userStr = localStorage.getItem("user");
+    const data = userStr != null ? JSON.parse(userStr) : [];
     console.log(data);
-  const url="http://localhost:8000/book/get-all-books";
-  axios.post(url).then(res=> {
-    console.log(res.data)
-    this.books = res.data;
-  })
-  .catch(err=>{alert(err.data)})
-}
+    const url = "http://localhost:8000/book/get-all-books";
+    axios.post(url).then(res => {
+      console.log(res.data)
+      this.books = res.data;
+    })
+      .catch(err => { alert(err.data) })
+  }
 }
 
