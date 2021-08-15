@@ -1,6 +1,6 @@
 <header id='header'>
         <nav class='navbar' >
-                <a class='logo' href="index.html"> Library</a>
+                <a class='logo' routerLink="home-page"> Library</a>
                 <a class='nav-item' routerLink="login" *ngIf="!isLoggedIn">Login</a>
                 <a class='nav-items' routerLink="register" *ngIf="!isLoggedIn">Register</a>
                 <a class='nav-items' routerLink="initial-page" *ngIf="isLoggedIn">AllBooks</a>

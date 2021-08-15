@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     else if (this.password == "") {
       alert("password cannot be empty");
     } else {
-      let url = "http://localhost:8000/users/login";
+      let url = "https://libraryapp-node-api.herokuapp.com/users/login";
       let userData = {
         email: this.email,
         password: this.password

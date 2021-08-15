@@ -15,7 +15,7 @@ export class AllordersComponent implements OnInit {
   orders: any;
   allOrders() {
     let i = 1;
-    const url = "http://localhost:8000/order/all-orders"
+    const url = "https://libraryapp-node-api.herokuapp.com/order/all-orders"
     axios.get(url)
       .then(res => {
         console.log(res.data)

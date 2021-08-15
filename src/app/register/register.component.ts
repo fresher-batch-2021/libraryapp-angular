@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
       alert("password must have upercase lowercase and number")
     }
     else {
-      let url = "http://localhost:8000/users/addUser";
+      let url = "https://libraryapp-node-api.herokuapp.com/users/addUser";
       let userData = {
         name: this.name,
         email: this.email,

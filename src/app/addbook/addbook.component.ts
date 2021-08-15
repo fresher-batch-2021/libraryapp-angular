@@ -61,7 +61,7 @@ export class AddbookComponent implements OnInit {
       }
       console.log(JSON.stringify(details));
 
-      const url = ('http://localhost:8000/book/add-book');
+      const url = ('https://libraryapp-node-api.herokuapp.com/book/add-book');
       axios.post(url, details).then(res => {
         console.log(res.data)
         alert(res.data)

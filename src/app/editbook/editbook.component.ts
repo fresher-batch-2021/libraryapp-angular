@@ -26,7 +26,8 @@ export class EditbookComponent implements OnInit {
   description: string = "";
   editBook() {
     console.log(this.bookId);
-    const url = ('http://localhost:8000/book/update-book/' + this.bookId);
+    
+    const url = ('https://libraryapp-node-api.herokuapp.com/book/update-book/' + this.bookId);
     axios.put(url, this.book).then(res => {
       console.log(res)
       window.location.href="books"
@@ -36,8 +37,7 @@ export class EditbookComponent implements OnInit {
 
   book: any;
   loadBook() {
-
-    const url = ('http://localhost:8000/book/get-book-by-id/' + this.bookId);
+    const url = ('https://libraryapp-node-api.herokuapp.com/book/get-book-by-id/' + this.bookId);
     axios.get(url).then(res => {
       console.log(res)
       this.book = res.data;
