@@ -226,9 +226,20 @@ caption {
 }
 .delete-book-button{
     cursor: pointer;
+    padding: 5px;
+    border:none;
+    border-radius:5px black;
+    background-color: #cccccc;
+    color:black;
 }
 .status-button{
     cursor: pointer;
+    padding: 5px;
+    border:none;
+    border-radius:5px black;
+    background-color: #cccccc;
+    color:black;
+    
 }
 /* initialpage */
 

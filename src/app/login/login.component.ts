@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
         console.log(user)
         const data = res.data
         console.log(data);
+        if (user.userRole==='admin') {
         alert(data.message);
-        if (data.message === "login successful") {
-          window.location.href = "initial-page"
+          window.location.href='initial-page'
         }
       }).catch(err => {
         console.log(err.response.data);

@@ -26,11 +26,11 @@ export class EditbookComponent implements OnInit {
   description: string = "";
   editBook() {
     console.log(this.bookId);
-    
+
     const url = ('https://libraryapp-node-api.herokuapp.com/book/update-book/' + this.bookId);
     axios.put(url, this.book).then(res => {
       console.log(res)
-      window.location.href="books"
+      window.location.href = "books"
 
     }).catch(err => alert("Enter the correct details"))
   }
