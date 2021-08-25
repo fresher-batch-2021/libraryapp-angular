@@ -19,7 +19,6 @@ export class EditbookComponent implements OnInit {
   }
   bookName: string = "";
   authorName: string = "";
-  quantity: string = "";
   price: string = "";
   category: string = "";
   image: string = "";

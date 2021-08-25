@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,7 +8,9 @@ import axios from 'axios';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastr:ToastrService) { 
+ 
+  }
 
   ngOnInit(): void {
   }
@@ -26,19 +29,15 @@ export class LoginComponent implements OnInit {
         password: this.password
       }
       axios.post(url, userData).then(res => {
-        let user = res.data.userData
+        let user = res.data
         localStorage.setItem('user', JSON.stringify(user));
         console.log(user)
-        const data = res.data
-        console.log(data);
-        if (user.userRole==='admin') {
-        alert(data.message);
+        if (user.userData.userRole==='admin') {
+        this.toastr.success(res.data.message);
           window.location.href='initial-page'
         }
       }).catch(err => {
-        console.log(err.response.data);
-        let errorMessage = err.response.data.errorMessage;
-        alert("Error:" + errorMessage);
+        this.toastr.error("Invalid email or password");
       })
     }
   }

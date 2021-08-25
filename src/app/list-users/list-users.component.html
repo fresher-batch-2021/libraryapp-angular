@@ -1,0 +1,26 @@
+<table>
+    <caption>BOOKS</caption>
+
+    <thead>
+        <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Registered Date</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let userObj of users;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{userObj.name}}</td>
+            <td>{{userObj.email}}</td>
+            <td>{{userObj.createdAt| date: 'yyyy-MM-dd'}}</td>
+            
+        </tr>
+    </tbody>
+
+</table>

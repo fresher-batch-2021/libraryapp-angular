@@ -14,8 +14,8 @@ export class AddbookComponent implements OnInit {
   }
   bookName: string = "";
   authorName: string = "";
-  quantity: string = "";
-  price: string = "";
+  quantity:any;
+  price:any;
   category: string = "";
   image: string = "";
   description: string = "";
@@ -29,22 +29,22 @@ export class AddbookComponent implements OnInit {
     const loggedInUser = userStr != null ? JSON.parse(userStr) : null;
     const createdby = loggedInUser.user_id
     console.log(createdby);
-    if (this.bookName == null || this.bookName == "") {
+    if (this.bookName == null || this.bookName == ""||this.bookName.trim()=='') {
       alert("Enter the BookName");
     }
-    else if (this.authorName == null || this.authorName == "") {
+    else if (this.authorName == null || this.authorName == ""||this.authorName.trim()=='') {
       alert("Enter the authorname");
     }
-    else if (this.quantity == null || this.quantity == "") {
+    else if (this.quantity == null) {
       alert("Enter the quantity");
     }
-    else if (this.price == null || this.price == "") {
+    else if (this.price == null) {
       alert("Enter the price of the book");
     }
-    else if (this.category == null || this.category == "") {
+    else if (this.category == null || this.category == ""||this.category.trim()=='') {
       alert("Enter the category of the book");
     }
-    else if (this.description == null || this.description == "") {
+    else if (this.description == null || this.description == ""||this.description.trim()=='') {
       alert("Enter the description of the book");
     }
     else {
@@ -65,8 +65,11 @@ export class AddbookComponent implements OnInit {
       axios.post(url, details).then(res => {
         console.log(res.data)
         alert(res.data)
-        window.location.href="books"
-      }).catch(err => alert({err:err.response}))
+        window.location.href = "books"
+      }).catch(err => alert({ err: err.response }))
     }
+  }
+  reset(){
+    this.bookName='';
   }
 }

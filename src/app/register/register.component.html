@@ -4,11 +4,12 @@
     <form class="register-form" (ngSubmit)="register()">
 
         <label for="name">Name:</label>
-        <input class="register-input" type="text" [(ngModel)]="name" name="name" id="name" placeholder="Name"autocomplete="off" autofocus>
+        <input class="register-input" type="text" [(ngModel)]="name" name="name" id="name" placeholder="Name"
+            autocomplete="off" autofocus>
         <label for="email">Email</label>
 
         <input class="register-input" type="email" [(ngModel)]="email" name="email" id="email" placeholder="Email"
-        autocomplete="off" required>
+            autocomplete="off" required>
         <label for="password">Password</label>
 
         <input class="register-input" type="password" [(ngModel)]="password" name="password" id="password"

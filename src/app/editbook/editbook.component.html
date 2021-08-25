@@ -9,10 +9,6 @@
             <label class="add-book-label" for="author">AuthorName:</label>
             <input class="add-book-input" type="text" name="author" id="author" [(ngModel)]="book.authorName"
                 autocomplete="off">
-
-            <label class="add-book-label" for="quantity">Quantity:</label>
-            <input class="add-book-input" type="text" name="quantity" id="quantity" [(ngModel)]="book.quantity"
-                autocomplete="off">
             <label class="add-book-label" for="Price">Price:</label>
             <input class="add-book-input" type="text" name="Price" id="price" [(ngModel)]="book.price"
                 autocomplete="off">
@@ -23,7 +19,7 @@
             <input class="add-book-input" type="text" id="file" name="image" [(ngModel)]="book.image"
                 autocomplete="off">
             <label class="add-book-label" for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="10" [(ngModel)]="book.description"
+            <textarea name="description"class="add-book-textarea" id="description" cols="30" rows="10" [(ngModel)]="book.description"
                 autocomplete="off"></textarea>
         </div>
 

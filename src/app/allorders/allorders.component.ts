@@ -14,15 +14,14 @@ export class AllordersComponent implements OnInit {
   }
   orders: any;
   allOrders() {
-    let i = 1;
     const url = "https://libraryapp-node-api.herokuapp.com/order/all-orders"
     axios.get(url)
       .then(res => {
-        console.log(res.data)
         this.orders = res.data
-        const order = res.data
 
       })
-      .catch(error => alert("not found"))
+      .catch(error => console.error(error))
   }
+
 }
+

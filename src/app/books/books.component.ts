@@ -1,3 +1,4 @@
+import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 @Component({
@@ -13,9 +14,8 @@ export class BooksComponent implements OnInit {
     this.allBooks();
   }
   books: any;
-  searchResults:any;
-
-  bookName:string = "";
+  searchResults: any;
+  bookName: string = "";
 
   allBooks() {
     let i = 1;
@@ -30,24 +30,29 @@ export class BooksComponent implements OnInit {
   updateBookStatus(book: any, status: string) {
     const bookObj = { status: status };
     const url = "https://libraryapp-node-api.herokuapp.com/book/update-book-status/" + book._id;
-    axios.put(url, bookObj).then(res =>
-      {console.log(res.data)
-    window.location.href = "books";
-      })
+    axios.put(url, bookObj).then(res => {
+      console.log(res.data)
+      window.location.href = "books";
+    })
 
   }
   deleteBook(book: any) {
-    const url = "https://libraryapp-node-api.herokuapp.com/book/delete-book/" + book._id;
-    axios.delete(url).then(res => {console.log(res.data),alert('book deleted')})
+    const url = "https://libraryapp-node-api.herokuapp.com/book/delete/" + book._id;
+    axios.delete(url).then(res => { console.log(res.data), alert(res.data),window.location.href='books' }).catch(err=>alert(err.message))
   }
 
-  search(){
-    console.log("Search" , this.bookName);
-    this.searchResults = this.books.filter( (obj:any)=> obj.bookName.toLowerCase().indexOf(this.bookName.toLowerCase()) !=-1);
-    
+  search() {
+    if(this.bookName==null||this.bookName.trim()==''){
+      alert("Enter the Book name")
+    }else{
+      console.log("Search", this.bookName);
+      this.searchResults = this.books.filter((obj: any) => obj.bookName.toLowerCase().indexOf(this.bookName.toLowerCase()) != -1);
+    }
+   
+
   }
 
-  clearSearch(){
-    this.searchResults  = this.books;
+  clearSearch() {
+    this.searchResults = this.books;
   }
 }
