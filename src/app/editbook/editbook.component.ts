@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
+import { BooksService } from '../books.service';
 @Component({
   selector: 'app-editbook',
   templateUrl: './editbook.component.html',
@@ -25,9 +26,8 @@ export class EditbookComponent implements OnInit {
   description: string = "";
   editBook() {
     console.log(this.bookId);
-
-    const url = ('https://libraryapp-node-api.herokuapp.com/book/update-book/' + this.bookId);
-    axios.put(url, this.book).then(res => {
+    const bookService= new BooksService();
+    bookService.editBook(this.book._id,this.book).then(res => {
       console.log(res)
       window.location.href = "books"
 
@@ -36,8 +36,8 @@ export class EditbookComponent implements OnInit {
 
   book: any;
   loadBook() {
-    const url = ('https://libraryapp-node-api.herokuapp.com/book/get-book-by-id/' + this.bookId);
-    axios.get(url).then(res => {
+    const bookService= new BooksService();
+    bookService.getBookById(this.bookId).then(res => {
       console.log(res)
       this.book = res.data;
 

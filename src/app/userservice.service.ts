@@ -12,7 +12,10 @@ export class UserserviceService {
 
   }
   login(userData:{email:string,password:string}){
-    return axios.post(this.url+'/login')
-
+    console.log(userData)
+    return axios.post(this.url+'/login',userData)
+  }
+  userLists(){
+    return axios.get(this.url+'/get-all-users')
   }
 }

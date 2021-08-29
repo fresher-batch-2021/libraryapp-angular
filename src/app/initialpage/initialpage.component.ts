@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { BooksService } from '../books.service';
 @Component({
   selector: 'app-initialpage',
   templateUrl: './initialpage.component.html',
@@ -7,7 +8,7 @@ import axios from 'axios';
 })
 export class InitialpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bookService:BooksService) { }
 
   ngOnInit(): void {
     this.allBooks();
@@ -19,8 +20,7 @@ export class InitialpageComponent implements OnInit {
     const userStr = localStorage.getItem("user");
     const data = userStr != null ? JSON.parse(userStr) : [];
     console.log(data);
-    const url = "https://libraryapp-node-api.herokuapp.com/book/get-all-books";
-    axios.post(url).then(res => {
+    this.bookService.allBooks().then(res => {
       console.log(res.data)
       this.books = res.data;
     })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios'
+import { OrdersService } from '../orders.service';
 @Component({
   selector: 'app-allorders',
   templateUrl: './allorders.component.html',
@@ -7,18 +8,16 @@ import axios from 'axios'
 })
 export class AllordersComponent implements OnInit {
 
-  constructor() { }
+  constructor( private orderService:OrdersService) { }
 
   ngOnInit(): void {
     this.allOrders();
   }
   orders: any;
   allOrders() {
-    const url = "https://libraryapp-node-api.herokuapp.com/order/all-orders"
-    axios.get(url)
-      .then(res => {
+  
+  this.orderService.allOrders().then(res => {
         this.orders = res.data
-
       })
       .catch(error => console.error(error))
   }

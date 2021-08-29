@@ -7,17 +7,20 @@ import { EditbookComponent } from './editbook/editbook.component';
 import { InitialpageComponent } from './initialpage/initialpage.component';
 import { LoginComponent } from './login/login.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { RequestedBooksComponent } from './requested-books/requested-books.component';
+import { AuthguardGuard } from './authguard.guard';
 // import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [ 
   {path:"login" ,component:LoginComponent},
   // {path:"register",component:RegisterComponent},
-  {path:"initial-page",component:InitialpageComponent},
-  {path:"books",component:BooksComponent},
-  {path:"add-book",component:AddbookComponent},
-  {path:"edit-book/:id",component:EditbookComponent},
-  {path:"all-orders",component:AllordersComponent},
-  {path:"allusers",component:ListUsersComponent}
+  {path:"initial-page",component:InitialpageComponent, canActivate:[AuthguardGuard]},
+  {path:"books",component:BooksComponent, canActivate:[AuthguardGuard]},
+  {path:"add-book",component:AddbookComponent, canActivate:[AuthguardGuard]},
+  {path:"edit-book/:id",component:EditbookComponent, canActivate:[AuthguardGuard]},
+  {path:"all-orders",component:AllordersComponent, canActivate:[AuthguardGuard]},
+  {path:"allusers",component:ListUsersComponent, canActivate:[AuthguardGuard]},
+{path:"requestedbooks",component:RequestedBooksComponent, canActivate:[AuthguardGuard]}
 
 ];
 

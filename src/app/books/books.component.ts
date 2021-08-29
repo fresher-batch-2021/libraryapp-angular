@@ -1,6 +1,7 @@
 import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { BooksService } from '../books.service';
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -8,7 +9,7 @@ import axios from 'axios';
 })
 export class BooksComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bookService : BooksService) { }
 
   ngOnInit(): void {
     this.allBooks();
@@ -16,11 +17,9 @@ export class BooksComponent implements OnInit {
   books: any;
   searchResults: any;
   bookName: string = "";
-
   allBooks() {
-    let i = 1;
-    const url = "https://libraryapp-node-api.herokuapp.com/book/get-all-books";
-    axios.post(url).then(res => {
+  
+  this.bookService.allBooks().then(res => {
       console.log(res.data)
       this.books = res.data;
       this.searchResults = this.books;
@@ -29,16 +28,14 @@ export class BooksComponent implements OnInit {
   }
   updateBookStatus(book: any, status: string) {
     const bookObj = { status: status };
-    const url = "https://libraryapp-node-api.herokuapp.com/book/update-book-status/" + book._id;
-    axios.put(url, bookObj).then(res => {
+    this.bookService.updateBookStatus(book._id,bookObj).then(res => {
       console.log(res.data)
       window.location.href = "books";
     })
 
   }
   deleteBook(book: any) {
-    const url = "https://libraryapp-node-api.herokuapp.com/book/delete/" + book._id;
-    axios.delete(url).then(res => { console.log(res.data), alert(res.data),window.location.href='books' }).catch(err=>alert(err.message))
+    this.bookService.deleteBook(book._id).then(res => { console.log(res.data), alert(res.data),window.location.href='books' }).catch(err=>alert(err.message))
   }
 
   search() {

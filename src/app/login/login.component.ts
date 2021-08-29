@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
+import { UserserviceService } from '../userservice.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,8 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private toastr:ToastrService) { 
- 
+  constructor(private toastr: ToastrService) {
+
   }
 
   ngOnInit(): void {
@@ -23,18 +24,19 @@ export class LoginComponent implements OnInit {
     else if (this.password == "") {
       alert("password cannot be empty");
     } else {
-      let url = "https://libraryapp-node-api.herokuapp.com/users/login";
       let userData = {
         email: this.email,
         password: this.password
       }
-      axios.post(url, userData).then(res => {
+      console.log(userData)
+      const userService = new UserserviceService();
+      userService.login(userData).then(res => {
         let user = res.data
         localStorage.setItem('user', JSON.stringify(user));
         console.log(user)
-        if (user.userData.userRole==='admin') {
-        this.toastr.success(res.data.message);
-          window.location.href='initial-page'
+        if (user.userData.userRole === 'admin') {
+          this.toastr.success(res.data.message);
+          window.location.href = 'initial-page'
         }
       }).catch(err => {
         this.toastr.error("Invalid email or password");

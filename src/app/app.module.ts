@@ -15,6 +15,7 @@ import { AllordersComponent } from './allorders/allorders.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RequestedBooksComponent } from './requested-books/requested-books.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddbookComponent,
     EditbookComponent,
     AllordersComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    RequestedBooksComponent
   ],
   imports: [
     BrowserModule,

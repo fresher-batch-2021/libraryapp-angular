@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from "axios";
+import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-addbook',
@@ -8,7 +9,7 @@ import axios from "axios";
 })
 export class AddbookComponent implements OnInit {
 
-  constructor() { }
+  constructor( private bookService:BooksService) { }
 
   ngOnInit(): void {
   }
@@ -60,16 +61,11 @@ export class AddbookComponent implements OnInit {
         "createdby": createdby
       }
       console.log(JSON.stringify(details));
-
-      const url = ('https://libraryapp-node-api.herokuapp.com/book/add-book');
-      axios.post(url, details).then(res => {
-        console.log(res.data)
-        alert(res.data)
+      this.bookService.addBook(details).then(res => {
+        alert("book added successfully")
         window.location.href = "books"
       }).catch(err => alert({ err: err.response }))
     }
   }
-  reset(){
-    this.bookName='';
-  }
+
 }
