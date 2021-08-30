@@ -11,6 +11,7 @@
                 <th scope="col">BookName</th>
                 <th scope="col">TakenDate</th>
                 <th scope="col">DueDate</th>
+                <th scope="col">Returned Date</th>
 
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{{orderObj.bookId.bookName}}</td>
                 <td>{{orderObj.orderDate| date: 'yyyy-MM-dd'}}</td>
                 <td>{{orderObj.dueDate| date: 'yyyy-MM-dd'}}</td>
+                <td>{{orderObj.returnDate| date: 'yyyy-MM-dd'}}</td>
 
             </tr>
         </tbody>

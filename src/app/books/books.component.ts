@@ -1,6 +1,5 @@
 import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
 import { BooksService } from '../books.service';
 @Component({
   selector: 'app-books',
@@ -35,7 +34,7 @@ export class BooksComponent implements OnInit {
 
   }
   deleteBook(book: any) {
-    this.bookService.deleteBook(book._id).then(res => { console.log(res.data), alert(res.data),window.location.href='books' }).catch(err=>alert(err.message))
+    this.bookService.deleteBook(book._id).then(res => { console.log(res.data); alert(res.data),window.location.href='books' }).catch(err=>alert(err.message))
   }
 
   search() {

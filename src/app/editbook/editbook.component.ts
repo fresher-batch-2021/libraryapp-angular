@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import axios from 'axios';
 import { BooksService } from '../books.service';
 @Component({
   selector: 'app-editbook',

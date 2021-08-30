@@ -2,7 +2,6 @@
         <nav class='navbar' >
                 <a class='logo' routerLink="home-page" *ngIf="!isLoggedIn">Library</a>
                 <a class='nav-item' routerLink="login" *ngIf="!isLoggedIn">Login</a>
-                <!-- <a class='nav-items' routerLink="register" *ngIf="!isLoggedIn">Register</a> -->
                 <a class='nav-items' routerLink="initial-page" *ngIf="isLoggedIn">Home</a>
                 <a class='nav-items' *ngIf="isLoggedIn" routerLink="books">Books</a>
                 <a class='nav-items' *ngIf="isLoggedIn" routerLink="allusers">Users</a>

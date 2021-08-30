@@ -9,11 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
 import { AuthguardGuard } from './authguard.guard';
-// import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [ 
   {path:"login" ,component:LoginComponent},
-  // {path:"register",component:RegisterComponent},
   {path:"initial-page",component:InitialpageComponent, canActivate:[AuthguardGuard]},
   {path:"books",component:BooksComponent, canActivate:[AuthguardGuard]},
   {path:"add-book",component:AddbookComponent, canActivate:[AuthguardGuard]},

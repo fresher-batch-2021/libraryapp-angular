@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   logout(){
-    const logout=localStorage.removeItem('user');
+   localStorage.removeItem('user');
     window.location.href="login"
   }
 }

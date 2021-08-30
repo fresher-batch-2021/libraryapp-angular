@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios'
 import { OrdersService } from '../orders.service';
 @Component({
   selector: 'app-allorders',
@@ -17,6 +16,7 @@ export class AllordersComponent implements OnInit {
   allOrders() {
   
   this.orderService.allOrders().then(res => {
+    console.log(res.data)
         this.orders = res.data
       })
       .catch(error => console.error(error))

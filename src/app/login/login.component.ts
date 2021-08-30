@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
 import { UserserviceService } from '../userservice.service';
 @Component({

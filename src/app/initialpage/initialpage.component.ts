@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
 import { BooksService } from '../books.service';
 @Component({
   selector: 'app-initialpage',

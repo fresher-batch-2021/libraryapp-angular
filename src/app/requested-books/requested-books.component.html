@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor="let bookObj of books;let i=index">
             <td>{{i+1}} </td>
-            <td> {{bookObj.userId.name}}</td>
+            <td> {{bookObj.requestedUsers}}</td>
             <td>  {{bookObj.bookName}}</td>
         </tr>
     </tbody>
