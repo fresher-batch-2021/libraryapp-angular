@@ -377,3 +377,20 @@ textarea{
 .addbook-button{
     display: flex;
 }
+.accept-button{
+    margin-right:5px;
+    cursor: pointer;
+    padding: 5px;
+    border:none;
+    border-radius:5px black;
+    background-color: #cccccc;
+    color:black;
+}
+.reject-button{
+    cursor: pointer;
+    padding: 5px;
+    border:none;
+    border-radius:5px black;
+    background-color: #cccccc;
+    color:black;
+}

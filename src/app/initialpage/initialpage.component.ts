@@ -19,11 +19,10 @@ export class InitialpageComponent implements OnInit {
     const userStr = localStorage.getItem("user");
     const data = userStr != null ? JSON.parse(userStr) : [];
     console.log(data);
-    this.bookService.allBooks().then(res => {
-      console.log(res.data)
-      this.books = res.data;
-    })
-      .catch(err => { alert(err.data) })
+    this.bookService.allBooks().subscribe((res:any) => {
+      console.log(res)
+      this.books = res;
+    }),((err:any) => { alert(err.data) })
   }
 }
 

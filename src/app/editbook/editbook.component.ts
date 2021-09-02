@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BooksService } from '../books.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-editbook',
   templateUrl: './editbook.component.html',
@@ -10,7 +12,7 @@ export class EditbookComponent implements OnInit {
 
   bookId: number;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private toastr: ToastrService,private route: ActivatedRoute,private bookService:BooksService) {
     this.bookId = this.route.snapshot.params["id"];
   }
 
@@ -25,22 +27,20 @@ export class EditbookComponent implements OnInit {
   description: string = "";
   editBook() {
     console.log(this.bookId);
-    const bookService= new BooksService();
-    bookService.editBook(this.book._id,this.book).then(res => {
+    this.bookService.editBook(this.book._id,this.book).subscribe((res:any) => {
       console.log(res)
       window.location.href = "books"
 
-    }).catch(err => alert("Enter the correct details"))
+    }),((err:any) =>  this.toastr.error("Enter the correct details"))
   }
 
   book: any;
   loadBook() {
-    const bookService= new BooksService();
-    bookService.getBookById(this.bookId).then(res => {
+    this.bookService.getBookById(this.bookId).subscribe((res:any) => {
       console.log(res)
-      this.book = res.data;
+      this.book = res;
 
-    }).catch(err => alert("Enter the correct details"))
+    }),((err:any) =>  this.toastr.error("book not found"))
   }
 }
 

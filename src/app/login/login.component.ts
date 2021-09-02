@@ -8,7 +8,9 @@ import { UserserviceService } from '../userservice.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private toastr: ToastrService) {
+  constructor(private toastr: ToastrService,
+    private userService:UserserviceService
+    ) {
 
   }
 
@@ -18,26 +20,26 @@ export class LoginComponent implements OnInit {
   password: string = "";
   login() {
     if (this.email == "") {
-      alert("Email cannot be empty");
+        this.toastr.error("Email cannot be empty");
     }
     else if (this.password == "") {
-      alert("password cannot be empty");
+        this.toastr.error("Enter  The Password");
     } else {
       let userData = {
         email: this.email,
         password: this.password
       }
       console.log(userData)
-      const userService = new UserserviceService();
-      userService.login(userData).then(res => {
-        let user = res.data
+      this.userService.login(userData).subscribe((res:any) => {
+        let user = res
+        console.log(user)
         localStorage.setItem('user', JSON.stringify(user));
         console.log(user)
         if (user.userData.userRole === 'admin') {
-          this.toastr.success(res.data.message);
+          this.toastr.success(res.message);
           window.location.href = 'initial-page'
         }
-      }).catch(err => {
+      }),((err:any) => {
         this.toastr.error("Invalid email or password");
       })
     }

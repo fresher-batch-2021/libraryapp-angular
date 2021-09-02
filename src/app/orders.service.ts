@@ -1,13 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import axios from 'axios'
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
   url = "https://libraryapp-node-api.herokuapp.com/order/all-orders"
 allOrders(){
-  return axios.get(this.url)
+  return this.http.get(this.url)
 }
 }

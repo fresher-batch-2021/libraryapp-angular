@@ -16,7 +16,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
-
+import { VerificationComponent } from './verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { RequestedBooksComponent } from './requested-books/requested-books.compo
     EditbookComponent,
     AllordersComponent,
     ListUsersComponent,
-    RequestedBooksComponent
+    RequestedBooksComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

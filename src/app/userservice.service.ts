@@ -1,21 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import axios from 'axios';
 @Injectable({
   providedIn: 'root'
 })
 export class UserserviceService {
 
-  constructor() { }
+  constructor( private http:HttpClient) { }
   url='https://libraryapp-node-api.herokuapp.com/users'
   register(userData:{name:string,email:string,password:string}){
-    return axios.post(this.url+'/addUser')
+    return this.http.post(this.url+'/addUser',userData)
 
   }
   login(userData:{email:string,password:string}){
     console.log(userData)
-    return axios.post(this.url+'/login',userData)
+    return this.http.post(this.url+'/login',userData)
   }
   userLists(){
-    return axios.get(this.url+'/get-all-users')
+    return this.http.get(this.url+'/get-all-users')
   }
 }

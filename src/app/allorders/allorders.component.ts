@@ -15,11 +15,9 @@ export class AllordersComponent implements OnInit {
   orders: any;
   allOrders() {
   
-  this.orderService.allOrders().then(res => {
-    console.log(res.data)
-        this.orders = res.data
-      })
-      .catch(error => console.error(error))
+  this.orderService.allOrders().subscribe((res:any) => {
+        this.orders = res
+      }),((error:any) => console.error(error))
   }
 
 }

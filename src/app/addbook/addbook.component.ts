@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addbook',
@@ -8,7 +9,7 @@ import { BooksService } from '../books.service';
 })
 export class AddbookComponent implements OnInit {
 
-  constructor( private bookService:BooksService) { }
+  constructor(private toastr: ToastrService, private bookService:BooksService) { }
 
   ngOnInit(): void {
   }
@@ -23,29 +24,29 @@ export class AddbookComponent implements OnInit {
   addBook() {
     const userStr = localStorage.getItem("user");
     if (userStr == null) {
-      alert("Please Login");
+     this.toastr.error("Please Login");
     }
 
     const loggedInUser = userStr != null ? JSON.parse(userStr) : null;
     const createdby = loggedInUser.user_id
     console.log(createdby);
     if (this.bookName == null || this.bookName == ""||this.bookName.trim()=='') {
-      alert("Enter the BookName");
+     this.toastr.error("Enter the BookName");
     }
     else if (this.authorName == null || this.authorName == ""||this.authorName.trim()=='') {
-      alert("Enter the authorname");
+     this.toastr.error("Enter the authorname");
     }
     else if (this.quantity == null) {
-      alert("Enter the quantity");
+     this.toastr.error("Enter the quantity");
     }
     else if (this.price == null) {
-      alert("Enter the price of the book");
+     this.toastr.error("Enter the price of the book");
     }
     else if (this.category == null || this.category == ""||this.category.trim()=='') {
-      alert("Enter the category of the book");
+     this.toastr.error("Enter the category of the book");
     }
     else if (this.description == null || this.description == ""||this.description.trim()=='') {
-      alert("Enter the description of the book");
+     this.toastr.error("Enter the description of the book");
     }
     else {
 
@@ -60,10 +61,11 @@ export class AddbookComponent implements OnInit {
         "createdby": createdby
       }
       console.log(JSON.stringify(details));
-      this.bookService.addBook(details).then(res => {
-        alert("book added successfully")
+      this.bookService.addBook(details).subscribe((res:any) => {
+        console.log(res)
+       this.toastr.success("book added successfully")
         window.location.href = "books"
-      }).catch(err => alert({ err: err.response }))
+      }),((err:any) =>this.toastr.error(err.response))
     }
   }
 
