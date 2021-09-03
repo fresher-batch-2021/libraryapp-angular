@@ -23,8 +23,13 @@ export class BookdaoService {
 
   }
   findAll(dbName: any) {
-    const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
-    return this.http.get(url, this.headers)
+   // const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
+   const url = this.baseUrl + "/" + dbName + "/_find";
+    let selector = {
+      selector : {},
+      sort : ["bookName"]
+    }
+    return this.http.post(url, selector, this.headers)
 
   }
   findOne(dbName: any, id: any) {

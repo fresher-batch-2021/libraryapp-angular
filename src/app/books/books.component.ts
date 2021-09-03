@@ -24,7 +24,7 @@ export class BooksComponent implements OnInit {
   allBooks() {
   
   this.bookService.allBooks().subscribe((res:any) => {
-      this.books =res.rows.map((obj:any) => obj.doc);
+      this.books =res.docs;//.map((obj:any) => obj.doc);
       console.log(this.books)
       this.searchResults = this.books;
     }),((err:any )=> { this.toastr.error(err) })
@@ -48,7 +48,6 @@ export class BooksComponent implements OnInit {
       }
       else{
         this.bookService.deleteBook(book).subscribe((res:any) => { 
-          console.log(res);
            this.toastr.success("Successfully Deleted") ;
            setTimeout(() => {
             this.router.navigate(["books"]);

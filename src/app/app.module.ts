@@ -15,7 +15,6 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
-import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { Router } from '@angular/router';
     AllordersComponent,
     ListUsersComponent,
     RequestedBooksComponent,
-    Router
   ],
   imports: [
     BrowserModule,

@@ -70,8 +70,9 @@ export class AddbookComponent implements OnInit {
       this.bookService.addBook(bookDetails).subscribe((res:any) => {
         console.log(res)
        this.toastr.success("book added successfully")
-        this.router.navigate(["books"]);
-        return false
+       setTimeout(() => {
+        this.router.navigate(["books"]);         
+       },1000);
       }),((err:any) =>this.toastr.error(err.response))
       }else{
         this.toastr.warning("Book Already Exists")
