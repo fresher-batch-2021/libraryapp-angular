@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
 import { AuthguardGuard } from './authguard.guard';
-import { VerificationComponent } from './verification/verification.component';
 
 const routes: Routes = [ 
   {path:"login" ,component:LoginComponent},
@@ -20,7 +19,6 @@ const routes: Routes = [
   {path:"all-orders",component:AllordersComponent, canActivate:[AuthguardGuard]},
   {path:"allusers",component:ListUsersComponent, canActivate:[AuthguardGuard]},
 {path:"requestedbooks",component:RequestedBooksComponent, canActivate:[AuthguardGuard]},
-{path:"verification",component:VerificationComponent, canActivate:[AuthguardGuard]}
 
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { ToastrService } from 'ngx-toastr';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-addbook',
@@ -9,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddbookComponent implements OnInit {
 
-  constructor(private toastr: ToastrService, private bookService:BooksService) { }
+  constructor(private toastr: ToastrService, private bookService:BooksService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -50,7 +51,7 @@ export class AddbookComponent implements OnInit {
     }
     else {
 
-      const details = {
+      const bookDetails = {
         "bookName": this.bookName,
         "authorName": this.authorName,
         "quantity": this.quantity,
@@ -58,14 +59,26 @@ export class AddbookComponent implements OnInit {
         "category": this.category,
         "image": this.image,
         "description": this.description,
-        "createdby": createdby
+        "createdby": createdby,
+        "status":"Active"
+
       }
-      console.log(JSON.stringify(details));
-      this.bookService.addBook(details).subscribe((res:any) => {
+      this.bookService.findBookByName(bookDetails).subscribe((res:any)=>{console.log(res.docs)
+      const isExists=res.docs.length
+      console.log(isExists)
+      if(isExists===0){
+      this.bookService.addBook(bookDetails).subscribe((res:any) => {
         console.log(res)
        this.toastr.success("book added successfully")
-        window.location.href = "books"
+        this.router.navigate(["books"]);
+        return false
       }),((err:any) =>this.toastr.error(err.response))
+      }else{
+        this.toastr.warning("Book Already Exists")
+      }
+      })
+      console.log(JSON.stringify(bookDetails));
+      
     }
   }
 

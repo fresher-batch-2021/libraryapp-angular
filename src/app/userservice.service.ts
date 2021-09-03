@@ -1,21 +1,41 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { RestService } from './rest.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserserviceService {
 
-  constructor( private http:HttpClient) { }
-  url='https://libraryapp-node-api.herokuapp.com/users'
-  register(userData:{name:string,email:string,password:string}){
-    return this.http.post(this.url+'/addUser',userData)
+  baseUrl: string;
+  dbName: string;
+  headers: any;
+  constructor(private http: HttpClient, private restService:RestService) {
+    this.dbName = environment.dbUsername
+    this.baseUrl = environment.baseUrl;
+    const basicAuth = 'Basic ' + btoa(environment.dbUsername + ':' + environment.dbPassword);
+    this.headers = { headers: { 'Authorization': basicAuth } };
+  }
+  collectionName='libraryapp_users';
 
-  }
-  login(userData:{email:string,password:string}){
-    console.log(userData)
-    return this.http.post(this.url+'/login',userData)
-  }
-  userLists(){
-    return this.http.get(this.url+'/get-all-users')
-  }
+
+
+ login(email:string, password:string, role = "ADMIN") {
+    const criteria = {
+        selector: {
+            email: email,
+            password: password,
+            role: role
+        },
+        fields: ["_id", "name", "email", "role"]
+    }
+    return this.restService.query(this.collectionName, criteria);
+    //console.log(results)
+    
+}
+
+usersLists() {
+  return this.restService.findAll(this.collectionName);
+}
 }

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { RequestService } from './request.service';
 @Injectable({
   providedIn: 'root'
 })
 export class RequestbooksService {
-
-  constructor(private http:HttpClient) { }
-  url = "https://libraryapp-node-api.herokuapp.com/request/all-requests"
+  collectionName = 'libraryapp_requests'
+  constructor(private http:HttpClient,private requestService:RequestService) { }
   allRequests(){
-    return this.http.get(this.url)
-  }
+        return this.requestService.findAll(this.collectionName)
+}
 }

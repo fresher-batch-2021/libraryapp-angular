@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { UserserviceService } from '../userservice.service';
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,8 @@ import { UserserviceService } from '../userservice.service';
 export class LoginComponent implements OnInit {
 
   constructor(private toastr: ToastrService,
-    private userService:UserserviceService
+    private userService:UserserviceService,
+    private router:Router
     ) {
 
   }
@@ -25,20 +27,18 @@ export class LoginComponent implements OnInit {
     else if (this.password == "") {
         this.toastr.error("Enter  The Password");
     } else {
-      let userData = {
-        email: this.email,
-        password: this.password
-      }
-      console.log(userData)
-      this.userService.login(userData).subscribe((res:any) => {
-        let user = res
+      this.userService.login(this.email, this.password).subscribe((res:any) => {
+        let results:any = res.docs;
+        console.log(results)
+        let user = results.length > 0 ? results[0] : null;
         console.log(user)
         localStorage.setItem('user', JSON.stringify(user));
         console.log(user)
-        if (user.userData.userRole === 'admin') {
-          this.toastr.success(res.message);
-          window.location.href = 'initial-page'
-        }
+        this.toastr.success('login success');
+        setTimeout(()=>{
+         this.router.navigate(['initial-page'])
+        },2000)
+        
       }),((err:any) => {
         this.toastr.error("Invalid email or password");
       })

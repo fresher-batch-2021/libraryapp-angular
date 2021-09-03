@@ -21,7 +21,8 @@ export class InitialpageComponent implements OnInit {
     console.log(data);
     this.bookService.allBooks().subscribe((res:any) => {
       console.log(res)
-      this.books = res;
+      this.books = res.rows.map((obj:any) => obj.doc);
+      console.log(this.books)
     }),((err:any) => { alert(err.data) })
   }
 }

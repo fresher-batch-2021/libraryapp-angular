@@ -15,8 +15,9 @@ export class AllordersComponent implements OnInit {
   orders: any;
   allOrders() {
   
-  this.orderService.allOrders().subscribe((res:any) => {
-        this.orders = res
+  this.orderService.getAllOrders().subscribe((res:any) => {
+        this.orders = res.rows.map((obj:any)=>obj)
+        console.log(this.orders)
       }),((error:any) => console.error(error))
   }
 

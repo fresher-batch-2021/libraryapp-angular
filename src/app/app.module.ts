@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-// import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { InitialpageComponent } from './initialpage/initialpage.component';
 import { BooksComponent } from './books/books.component';
@@ -16,13 +15,12 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
-import { VerificationComponent } from './verification/verification.component';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    // RegisterComponent,
     LoginComponent,
     InitialpageComponent,
     BooksComponent,
@@ -31,7 +29,7 @@ import { VerificationComponent } from './verification/verification.component';
     AllordersComponent,
     ListUsersComponent,
     RequestedBooksComponent,
-    VerificationComponent
+    Router
   ],
   imports: [
     BrowserModule,

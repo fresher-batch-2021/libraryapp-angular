@@ -10,15 +10,13 @@ export class RequestedBooksComponent implements OnInit {
   constructor( private requestBooksService:RequestbooksService) { }
 
   ngOnInit(): void {
-    this.requestedBooks()
+    this.allRequests()
   }
   books:any;
   userName:any;
-  requestedBooks(){
+  allRequests(){
     this.requestBooksService.allRequests().subscribe((res:any)=>{
-  this.books=res
-this.userName=res.forEach((obj:any)=>obj.bookName)
-console.log(this.userName)
+  this.books=res.rows.map((e:any)=>e.doc)
 }),((err:any)=>console.log(err.message))
   }
 

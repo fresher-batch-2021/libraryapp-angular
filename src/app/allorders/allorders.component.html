@@ -2,7 +2,7 @@
    
 
     <table>
-        <caption>BOOKS</caption>
+        <caption>ORDERS</caption>
 
         <thead>
             <tr>
@@ -19,11 +19,11 @@
 
             <tr *ngFor="let orderObj of orders ;let i=index">
                 <td>{{i+1}}</td>
-                <td>{{orderObj.userId.name}}</td>
-                <td>{{orderObj.bookId.bookName}}</td>
-                <td>{{orderObj.orderDate| date: 'yyyy-MM-dd'}}</td>
-                <td>{{orderObj.dueDate| date: 'yyyy-MM-dd'}}</td>
-                <td>{{orderObj.returnDate| date: 'yyyy-MM-dd'}}</td>
+                <td>{{orderObj.doc.user.name}}</td>
+                <td>{{orderObj.doc.book.bookTitle}}</td>
+                <td>{{orderObj.doc.orderDate| date: 'yyyy-MM-dd'}}</td>
+                <td>{{orderObj.doc.dueDate| date: 'yyyy-MM-dd'}}</td>
+                <td>{{orderObj.doc.returnDate| date: 'yyyy-MM-dd'}}</td>
 
             </tr>
         </tbody>

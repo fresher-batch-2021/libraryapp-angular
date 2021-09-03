@@ -12,12 +12,13 @@ export class AuthguardGuard implements CanActivate {
       const userStr = localStorage.getItem("user");
       const data = userStr != null ? JSON.parse(userStr) : [];
       console.log(data);
-      if(data!=null&& data.userData.userRole=='admin'){
+      if(data!=null&& data.role==='ADMIN'){
         return true;
       }else{
         alert('Your are not authorised')
         window.location.href='login'
       }
+     
     return true;
   }
   

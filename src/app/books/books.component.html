@@ -19,8 +19,6 @@
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col"> Actions</th>
-                <th scope="col"> Status</th>
-
 
             </tr>
         </thead>
@@ -37,14 +35,7 @@
                 <a class="book-anchor" routerLink="/edit-book/{{bookobj._id}}">Edit</a>&nbsp;<button class="delete-book-button"
                     (click)="deleteBook(bookobj)">Delete</button>
                 </td>
-                <td>
-
-                    <button class="status-button" *ngIf="bookobj.status=='InActive'"
-                        (click)="updateBookStatus(bookobj,'Active')">Available</button>
-                    <button class="status-button" *ngIf="bookobj.status=='Active'"
-                        (click)="updateBookStatus(bookobj,'InActive')">NotAvailable</button>
-
-                </td>
+             
             </tr>
         </tbody>
 
