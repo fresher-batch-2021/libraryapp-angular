@@ -5,12 +5,13 @@ import { LoginComponent } from './login/login.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
 import { AuthguardGuard } from './authguard.guard';
+import { RoleGuard } from './role.guard';
 
 const routes: Routes = [ 
   {path:"login" ,component:LoginComponent},
-  {path:"initial-page",component:InitialpageComponent, canActivate:[AuthguardGuard]},
-  {path:"allusers",component:ListUsersComponent, canActivate:[AuthguardGuard]},
-  {path:"requestedbooks",component:RequestedBooksComponent, canActivate:[AuthguardGuard]}, 
+  {path:"home-page",component:InitialpageComponent, canActivate:[AuthguardGuard, RoleGuard]},
+  {path:"allusers",component:ListUsersComponent, canActivate:[AuthguardGuard,RoleGuard]},
+  {path:"requestedbooks",component:RequestedBooksComponent, canActivate:[AuthguardGuard,RoleGuard]}, 
 {
   path: 'books',
   loadChildren: () => import('./bookmodule/bookmodule.module').then(m => m.BookmoduleModule)

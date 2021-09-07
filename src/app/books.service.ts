@@ -11,12 +11,9 @@ export class BooksService {
 
   baseUrl: string;
   dbName: string;
-  headers: any;
   constructor(private http:HttpClient,private bookService:BookdaoService,private orderService:OrdersService) {
     this.dbName = environment.dbUsername
     this.baseUrl = environment.baseUrl;
-    const basicAuth = 'Basic ' + btoa(environment.dbUsername + ':' + environment.dbPassword);
-    this.headers = { headers: { 'Authorization': basicAuth } };
    }
   url = "https://libraryapp-node-api.herokuapp.com/book";
   collectionName='libraryapp_books';

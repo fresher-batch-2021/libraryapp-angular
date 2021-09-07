@@ -12,14 +12,12 @@ export class BookdaoService {
   constructor(private http: HttpClient) {
 
     this.baseUrl = environment.baseUrl;
-    const basicAuth = 'Basic ' + btoa(environment.dbUsername + ':' + environment.dbPassword);
-    this.headers = { headers: { 'Authorization': basicAuth } };
   }
   save(dbName: any, inputData: any) {
     const url = this.baseUrl + '/' + dbName
     console.log(url)
     console.log(inputData)
-    return this.http.post(url, inputData, this.headers)
+    return this.http.post(url, inputData)
 
   }
   findAll(dbName: any) {
@@ -29,13 +27,13 @@ export class BookdaoService {
       selector : {},
       sort : ["bookName"]
     }
-    return this.http.post(url, selector, this.headers)
+    return this.http.post(url, selector)
 
   }
   findOne(dbName: any, id: any) {
     const url = this.baseUrl + "/" + dbName + "/" + id;
     console.log(url);
-    return this.http.get(url, this.headers);
+    return this.http.get(url);
   }
   updateBook(dbName: any, inputData: any) {
 
@@ -43,14 +41,14 @@ export class BookdaoService {
       const url = this.baseUrl + "/" + dbName + "/" + inputData._id ;
       console.log(url);
 
-      return this.http.put(url, inputData, this.headers);
+      return this.http.put(url, inputData);
 
   }
    deleteOne(dbName:any, bookObj:any) {
     
     const url = this.baseUrl + '/' + dbName + '/' + bookObj._id + "?rev="+ bookObj._rev;
     console.log(url)
-  return this.http.delete(url, this.headers)
+  return this.http.delete(url)
 }
  findBook(dbName:any, bookName:any) {
   const url = this.baseUrl + "/" + dbName + "/_find";
@@ -61,6 +59,6 @@ export class BookdaoService {
       }
   }
   console.log(criteria)
-return this.http.post(url, criteria, this.headers);
+return this.http.post(url, criteria);
 }
 }

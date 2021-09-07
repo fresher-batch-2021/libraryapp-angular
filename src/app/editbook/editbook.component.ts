@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BooksService } from '../books.service';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from '@angular/router'
+import { Book } from '../book';
 
 @Component({
   selector: 'app-editbook',
@@ -14,7 +15,7 @@ export class EditbookComponent implements OnInit {
   bookId: number;
 
   constructor(private toastr: ToastrService,private route: ActivatedRoute,private bookService:BooksService,private router:Router) {
-    this.bookId = this.route.snapshot.params["id"];
+    this.bookId = this.route.parent?.snapshot.params["id"];
   }
 
   ngOnInit(): void {
@@ -37,7 +38,8 @@ export class EditbookComponent implements OnInit {
     }),((err:any) =>  this.toastr.error("Enter the correct details"))
   }
 
-  book: any;
+  book!:Book;
+
   loadBook() {
     console.log(this.bookId)
     this.bookService.getBookById(this.bookId).subscribe((res:any) => {

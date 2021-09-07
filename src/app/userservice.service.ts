@@ -10,12 +10,9 @@ export class UserserviceService {
 
   baseUrl: string;
   dbName: string;
-  headers: any;
   constructor(private http: HttpClient, private restService:RestService) {
     this.dbName = environment.dbUsername
     this.baseUrl = environment.baseUrl;
-    const basicAuth = 'Basic ' + btoa(environment.dbUsername + ':' + environment.dbPassword);
-    this.headers = { headers: { 'Authorization': basicAuth } };
   }
   collectionName='libraryapp_users';
 

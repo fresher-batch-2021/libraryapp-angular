@@ -13,8 +13,6 @@ export class OrderdaoService {
   constructor(private http: HttpClient) {
     
     this.baseUrl = environment.baseUrl;
-    const basicAuth = 'Basic ' + btoa(environment.dbUsername + ':' + environment.dbPassword);
-    this.headers = { headers: { 'Authorization': basicAuth } };
    }
   isBookTaken(dbName:any,book:any) {
     const url = this.baseUrl + "/" + dbName + "/_find";
@@ -27,13 +25,13 @@ export class OrderdaoService {
         
     }
     console.log(criteria)
-    return this.http.post(url, criteria, this.headers);
+    return this.http.post(url, criteria);
     
 }
  findAll(dbName:any) {
 
   const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
   console.log(url);
-  return this.http.get(url, this.headers);
+  return this.http.get(url);
 }
 }

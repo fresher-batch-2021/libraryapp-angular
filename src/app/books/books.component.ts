@@ -4,6 +4,9 @@ import { BooksService } from '../books.service';
 import { ToastrService } from 'ngx-toastr';
 import { OrdersService } from '../orders.service';
 import {Router} from '@angular/router'
+import { Subject } from 'rxjs';
+import { Book } from '../book';
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -12,26 +15,41 @@ import {Router} from '@angular/router'
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private toastr: ToastrService,private bookService : BooksService, private orderService: OrdersService,private router:Router) { 
+  
+  constructor(private toastr: ToastrService,private bookService : BooksService, private orderService: OrdersService,private router:Router,private spinner: NgxSpinnerService) { 
     console.log("Books component");
   }
 
   ngOnInit(): void {
     this.allBooks();
+     this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
+    this.spinner.show();
+  
   }
-  books: any;
-  searchResults: any;
+  book!:Book[];
+  searchResults: string='';
   bookName: string = "";
   allBooks() {
   
   this.bookService.allBooks().subscribe((res:any) => {
-      this.books =res.docs;//.map((obj:any) => obj.doc);
-      console.log(this.books)
-      this.searchResults = this.books;
+      this.book =res.docs;
+      console.log(this.book)
+      this.dtTrigger.next();
+
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 2000)
+
     }),((err:any )=> { this.toastr.error(err) })
   }
-  updateBookStatus(book: any,status:any) {
+  updateBookStatus(book:Book,status:any) {
     const bookObj={book,status:status}
     this.bookService.updateBookStatus(bookObj).subscribe((res:any) => {
       console.log(res)
@@ -39,7 +57,7 @@ export class BooksComponent implements OnInit {
     })
 
   }
-  deleteBook(book: any) {
+  deleteBook(book:Book) {
 
     //1. check whether book is taken ?
     this.orderService.bookTaken(book).subscribe( (res:any)=>{
@@ -52,7 +70,7 @@ export class BooksComponent implements OnInit {
         this.bookService.deleteBook(book).subscribe((res:any) => { 
            this.toastr.success("Successfully Deleted") ;
            setTimeout(() => {
-            this.router.navigate(["books"]);
+            this.router.navigate(["home-page"]);
           },2000);
         },
         ((err:any)=>{
@@ -65,18 +83,4 @@ export class BooksComponent implements OnInit {
     
   }
 
-  search() {
-    if(this.bookName==null||this.bookName.trim()==''){
-      this.toastr.error("Enter the Book name")
-    }else{
-      console.log("Search", this.bookName);
-      this.searchResults = this.books.filter((obj: any) => obj.bookName.toLowerCase().indexOf(this.bookName.toLowerCase()) != -1);
-    }
-   
-
-  }
-
-  clearSearch() {
-    this.searchResults = this.books;
-  }
 }

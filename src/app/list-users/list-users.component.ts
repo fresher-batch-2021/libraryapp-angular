@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../userservice.service';
 import axios from 'axios'
+import { User } from '../book';
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
@@ -13,7 +14,7 @@ export class ListUsersComponent implements OnInit {
   ngOnInit(): void {
     this.allUsers()
   }
-  users: any;
+  users!:User[];
   user: any;
   allUsers() {
     const userStr = localStorage.getItem('user');
@@ -21,7 +22,6 @@ export class ListUsersComponent implements OnInit {
     console.log(this.user);
     this.userService.usersLists().subscribe((res:any) => {
       this.users = res.rows.map((obj:any) => obj.doc)
-      console.log(this.users)
     }
 
     ),((error:any) => console.error({ error: error.message }))

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from '../book';
 import { BooksService } from '../books.service';
 @Component({
   selector: 'app-initialpage',
@@ -12,8 +13,7 @@ export class InitialpageComponent implements OnInit {
   ngOnInit(): void {
     this.allBooks();
   }
-
-  books: any;
+  book!:Book[];
   userStr: any;
   allBooks() {
     const userStr = localStorage.getItem("user");
@@ -21,8 +21,8 @@ export class InitialpageComponent implements OnInit {
     console.log(data);
     this.bookService.allBooks().subscribe((res:any) => {
       console.log(res)
-      this.books = res.docs;
-      console.log(this.books)
+      this.book = res.docs;
+      console.log(this.book)
     }),((err:any) => { alert(err.data) })
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { ToastrService } from 'ngx-toastr';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import {Book} from '../book'
 
 @Component({
   selector: 'app-addbook',
@@ -11,17 +12,15 @@ import {Router} from '@angular/router'
 export class AddbookComponent implements OnInit {
 
   constructor(private toastr: ToastrService, private bookService:BooksService,private router:Router) { }
-
   ngOnInit(): void {
   }
   bookName: string = "";
   authorName: string = "";
-  quantity:any;
-  price:any;
+  quantity!:number;
+  price!:number;
   category: string = "";
   image: string = "";
   description: string = "";
-  createdby: any;
   addBook() {
     const userStr = localStorage.getItem("user");
     if (userStr == null) {
@@ -63,7 +62,9 @@ export class AddbookComponent implements OnInit {
         "status":"Active"
 
       }
-      this.bookService.findBookByName(bookDetails).subscribe((res:any)=>{console.log(res.docs)
+      const bookObj=new Book()
+      bookObj.setData(bookDetails);
+      this.bookService.findBookByName(bookObj).subscribe((res:any)=>{console.log(res.docs)
       const isExists=res.docs.length
       console.log(isExists)
       if(isExists===0){

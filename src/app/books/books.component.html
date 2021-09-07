@@ -1,13 +1,13 @@
 <div>
     <div class="search">
-        <input type="text" class="search-input" name="bookName" id="search" [(ngModel)]="bookName" placeholder="Search..." autocomplete="off">
-        <button type="button" class="search-button" (click)="search()">Search</button>
-        <button type="button" class="reset-button" (click)=" clearSearch()">Reset</button>
+        <!-- <input type="text" class="search-input" name="bookName" id="search" [(ngModel)]="bookName" placeholder="Search..." autocomplete="off"> -->
+        <!-- <button type="button" class="search-button" (click)="search()">Search</button>
+        <button type="button" class="reset-button" (click)=" clearSearch()">Reset</button> -->
 
         <br>
     </div>
 
-    <table datatable  class="row-border hover">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
         <caption>BOOKS</caption>
 
         <thead>
@@ -24,7 +24,7 @@
         </thead>
         <tbody>
 
-            <tr *ngFor="let bookobj of searchResults;let i=index">
+            <tr *ngFor="let bookobj of book;let i=index">
                 <td>{{i+1}}</td>
                 <td>{{bookobj.bookName}}</td>
                 <td>{{bookobj.authorName}}</td>
@@ -32,7 +32,7 @@
                 <td>Rs:{{bookobj.price}}</td>
                 <td>{{bookobj.quantity}}</td>
                 <td>
-                <a class="book-anchor" routerLink="edit-book/{{bookobj._id}}">Edit</a>&nbsp;<button class="delete-book-button"
+                <a class="book-anchor" routerLink="{{bookobj._id}}/edit">Edit</a>&nbsp;<button class="delete-book-button"
                     (click)="deleteBook(bookobj)">Delete</button>
                 </td>
              
@@ -53,3 +53,12 @@
 
     </div>
 </div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

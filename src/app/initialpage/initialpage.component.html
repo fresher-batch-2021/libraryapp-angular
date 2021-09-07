@@ -1,11 +1,11 @@
 <div class="row">
 
-    <div id="books" *ngFor="let bookObj of books">
+    <div id="books" *ngFor="let bookObj of book">
         <div class="card">
             <h1 class="initial-page-h1">{{bookObj.bookName}} </h1>
             <h4 class="initial-page-h4">{{bookObj.authorName}}</h4>
             <img class='initial-page-img' src="assets/images/{{bookObj.image}}" alt="image not found" />
-
+<p>no of orders:10</p>
         </div>
     </div>
 </div>

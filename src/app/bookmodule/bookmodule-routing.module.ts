@@ -5,12 +5,21 @@ import { AllordersComponent } from '../allorders/allorders.component';
 import { AuthguardGuard } from '../authguard.guard';
 import { BooksComponent } from '../books/books.component';
 import { EditbookComponent } from '../editbook/editbook.component';
+import { RoleGuard } from '../role.guard';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 const routes: Routes = [
-  {path:"",component:BooksComponent, canActivate:[AuthguardGuard]},
-  {path:"add-book",component:AddbookComponent, canActivate:[AuthguardGuard]},
-  {path:"edit-book/:id",component:EditbookComponent, canActivate:[AuthguardGuard]},
-  {path:"all-orders",component:AllordersComponent, canActivate:[AuthguardGuard]},
+  { path: "", component: BooksComponent, canActivate: [AuthguardGuard,RoleGuard] },
+  { path: "add-book", component: AddbookComponent, canActivate: [AuthguardGuard,RoleGuard] },
+  { path: "all-orders", component: AllordersComponent, canActivate: [AuthguardGuard,RoleGuard] },
+
+  {
+    path: ":id",
+    children: [
+      { path: 'edit', component: EditbookComponent, canActivate: [AuthguardGuard] }
+    ]
+  },
 
 ];
 

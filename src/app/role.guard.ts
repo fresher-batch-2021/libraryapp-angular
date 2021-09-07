@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthguardGuard implements CanActivate {
+export class RoleGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -13,7 +13,7 @@ export class AuthguardGuard implements CanActivate {
       console.log("AuthGuard ", userStr);
       const data = userStr != null ? JSON.parse(userStr) : [];
       console.log(data);
-      if(data!=null){
+      if(data!=null&& data.role==='ADMIN'){
         return true;
       }else{
         alert('Your are not authorised')

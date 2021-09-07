@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../orders.service';
+import { ToastrService } from 'ngx-toastr';
+import { Order } from '../order';
 @Component({
   selector: 'app-allorders',
   templateUrl: './allorders.component.html',
@@ -7,19 +9,22 @@ import { OrdersService } from '../orders.service';
 })
 export class AllordersComponent implements OnInit {
 
-  constructor( private orderService:OrdersService) { }
+  constructor( private orderService:OrdersService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.allOrders();
   }
-  orders: any;
+  order!:Order[];
   allOrders() {
+    
   
   this.orderService.getAllOrders().subscribe((res:any) => {
-        this.orders = res.rows.map((obj:any)=>obj)
-        console.log(this.orders)
+    console.log(res)
+        this.order = res.rows.map((obj:any)=>obj.doc)
+
+        console.log(this.order)
       }),((error:any) => console.error(error))
   }
-
+ 
 }
 

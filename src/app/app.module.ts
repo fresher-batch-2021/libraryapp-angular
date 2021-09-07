@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule,  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,10 +11,13 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
+import { DataTablesModule } from "angular-datatables";
+import { InterceptorsService } from './interceptors.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     HeaderComponent,
     LoginComponent,
     InitialpageComponent,
@@ -28,8 +31,10 @@ import { RequestedBooksComponent } from './requested-books/requested-books.compo
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    DataTablesModule,
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorsService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
