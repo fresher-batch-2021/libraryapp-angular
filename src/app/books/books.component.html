@@ -7,7 +7,7 @@
         <br>
     </div>
 
-    <table>
+    <table datatable  class="row-border hover">
         <caption>BOOKS</caption>
 
         <thead>
@@ -32,7 +32,7 @@
                 <td>Rs:{{bookobj.price}}</td>
                 <td>{{bookobj.quantity}}</td>
                 <td>
-                <a class="book-anchor" routerLink="/edit-book/{{bookobj._id}}">Edit</a>&nbsp;<button class="delete-book-button"
+                <a class="book-anchor" routerLink="edit-book/{{bookobj._id}}">Edit</a>&nbsp;<button class="delete-book-button"
                     (click)="deleteBook(bookobj)">Delete</button>
                 </td>
              
@@ -42,11 +42,11 @@
     </table>
 
     <div class='orderbooks'>
-        <a routerLink="/all-orders" class="books-a">
+        <a routerLink="all-orders" class="books-a">
             <button class="order-button">Ordered Books</button>
 
         </a>
-        <a routerLink="/add-book" class="books-a">
+        <a routerLink="add-book" class="books-a">
             <button class="order-button">Add book</button>
 
         </a>

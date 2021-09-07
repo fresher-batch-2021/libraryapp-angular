@@ -13,7 +13,9 @@ import {Router} from '@angular/router'
 })
 export class BooksComponent implements OnInit {
 
-  constructor(private toastr: ToastrService,private bookService : BooksService, private orderService: OrdersService,private router:Router) { }
+  constructor(private toastr: ToastrService,private bookService : BooksService, private orderService: OrdersService,private router:Router) { 
+    console.log("Books component");
+  }
 
   ngOnInit(): void {
     this.allBooks();
