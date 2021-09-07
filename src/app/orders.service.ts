@@ -6,17 +6,17 @@ import { OrderdaoService } from './orderdao.service';
 })
 export class OrdersService {
 
-  constructor(private http:HttpClient,private orderDao:OrderdaoService) { }
- collectionName = "libraryapp_orders";
+  constructor(private http: HttpClient, private orderDao: OrderdaoService) { }
+  collectionName = "libraryapp_orders";
 
 
-    getAllOrders() {
-        return this.orderDao.findAll(this.collectionName);
-    }
- 
-    bookTaken(book:any){
-       return this.orderDao.isBookTaken(this.collectionName,book)
-     
-    }
+  getAllOrders() {
+    return this.orderDao.findAll(this.collectionName);
+  }
+
+  bookTaken(book: any) {
+    return this.orderDao.isBookTaken(this.collectionName, book)
+
+  }
 
 }

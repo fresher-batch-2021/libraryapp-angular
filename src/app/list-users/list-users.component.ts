@@ -14,17 +14,17 @@ export class ListUsersComponent implements OnInit {
   ngOnInit(): void {
     this.allUsers()
   }
-  users!:User[];
+  users!: User[];
   user: any;
   allUsers() {
     const userStr = localStorage.getItem('user');
     this.user = userStr != null ? JSON.parse(userStr) : null;
     console.log(this.user);
-    this.userService.usersLists().subscribe((res:any) => {
-      this.users = res.rows.map((obj:any) => obj.doc)
+    this.userService.usersLists().subscribe((res: any) => {
+      this.users = res.rows.map((obj: any) => obj.doc)
     }
 
-    ),((error:any) => console.error({ error: error.message }))
+    ), ((error: any) => console.error({ error: error.message }))
   }
 
 }

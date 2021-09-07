@@ -10,29 +10,28 @@ export class UserserviceService {
 
   baseUrl: string;
   dbName: string;
-  constructor(private http: HttpClient, private restService:RestService) {
+  constructor(private http: HttpClient, private restService: RestService) {
     this.dbName = environment.dbUsername
     this.baseUrl = environment.baseUrl;
   }
-  collectionName='libraryapp_users';
+  collectionName = 'libraryapp_users';
 
 
 
- login(email:string, password:string, role = "ADMIN") {
+  login(email: string, password: string, role = "ADMIN") {
     const criteria = {
-        selector: {
-            email: email,
-            password: password,
-            role: role
-        },
-        fields: ["_id", "name", "email", "role"]
+      selector: {
+        email: email,
+        password: password,
+        role: role
+      },
+      fields: ["_id", "name", "email", "role"]
     }
     return this.restService.query(this.collectionName, criteria);
-    //console.log(results)
-    
-}
 
-usersLists() {
-  return this.restService.findAll(this.collectionName);
-}
+  }
+
+  usersLists() {
+    return this.restService.findAll(this.collectionName);
+  }
 }

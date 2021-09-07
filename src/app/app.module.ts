@@ -1,4 +1,4 @@
-import { NgModule,  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +17,6 @@ import { InterceptorsService } from './interceptors.service';
 @NgModule({
   declarations: [
     AppComponent,
-
     HeaderComponent,
     LoginComponent,
     InitialpageComponent,
@@ -34,7 +33,7 @@ import { InterceptorsService } from './interceptors.service';
     DataTablesModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorsService,multi:true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorsService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

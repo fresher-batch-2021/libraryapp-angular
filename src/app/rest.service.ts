@@ -7,22 +7,22 @@ import { HttpClient } from '@angular/common/http';
 export class RestService {
 
   baseUrl: string;
-  
+
   constructor(private http: HttpClient) {
-    
+
     this.baseUrl = environment.baseUrl;
-   }
-   query(dbName:any, selector:any) {
+  }
+  query(dbName: any, selector: any) {
     const url = this.baseUrl + "/" + dbName + "/_find";
     console.log(url);
     console.log(JSON.stringify(selector));
 
     return this.http.post(url, selector);
-}
- findAll(dbName:any) {
+  }
+  findAll(dbName: any) {
 
-  const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
-  console.log(url);
-  return this.http.get(url);
-}
+    const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
+    console.log(url);
+    return this.http.get(url);
+  }
 }

@@ -7,31 +7,31 @@ import { environment } from 'src/environments/environment';
 export class OrderdaoService {
 
   baseUrl: string;
-  
+
   headers: any;
-  data:any;
+  data: any;
   constructor(private http: HttpClient) {
-    
+
     this.baseUrl = environment.baseUrl;
-   }
-  isBookTaken(dbName:any,book:any) {
+  }
+  isBookTaken(dbName: any, book: any) {
     const url = this.baseUrl + "/" + dbName + "/_find";
     console.log(url);
     console.log(book)
-    let criteria={
-        selector:{
-            book:{_id:book._id},status:"ordered"
-        }
-        
+    let criteria = {
+      selector: {
+        book: { _id: book._id }, status: "ordered"
+      }
+
     }
     console.log(criteria)
     return this.http.post(url, criteria);
-    
-}
- findAll(dbName:any) {
 
-  const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
-  console.log(url);
-  return this.http.get(url);
-}
+  }
+  findAll(dbName: any) {
+
+    const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
+    console.log(url);
+    return this.http.get(url);
+  }
 }

@@ -9,22 +9,22 @@ import { Order } from '../order';
 })
 export class AllordersComponent implements OnInit {
 
-  constructor( private orderService:OrdersService,private toastr: ToastrService) { }
+  constructor(private orderService: OrdersService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.allOrders();
   }
-  order!:Order[];
+  order!: Order[];
   allOrders() {
-    
-  
-  this.orderService.getAllOrders().subscribe((res:any) => {
-    console.log(res)
-        this.order = res.rows.map((obj:any)=>obj.doc)
 
-        console.log(this.order)
-      }),((error:any) => console.error(error))
+
+    this.orderService.getAllOrders().subscribe((res: any) => {
+      console.log(res)
+      this.order = res.rows.map((obj: any) => obj.doc)
+
+      console.log(this.order)
+    }), ((error: any) => console.error(error))
   }
- 
+
 }
 

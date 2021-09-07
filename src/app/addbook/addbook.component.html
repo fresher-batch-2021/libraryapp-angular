@@ -1,6 +1,6 @@
 <h1 class="add-book-h1">Add Books</h1>
 <div class='book-container'>
-    <form (ngSubmit)="addBook()" >
+    <form (ngSubmit)="addBook()">
         <div class="add-book">
 
             <label class="add-book-label" for="bookName">BookName:</label>
@@ -25,10 +25,10 @@
                 <textarea name="description" class="add-book-input" id="description" cols="30" rows="10"
                     [(ngModel)]="description" autocomplete="off">Description</textarea>
             </div>
-            
+
         </div>
 
-        <div class ="addbook-button">
+        <div class="addbook-button">
             <button type="submit" class="add-book-button">Add</button>
             <button class="add-book-button" type="reset">Reset</button>
 

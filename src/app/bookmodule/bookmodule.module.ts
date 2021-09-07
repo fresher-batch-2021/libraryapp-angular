@@ -21,7 +21,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 
   ],
   imports: [
-    CommonModule,    
+    CommonModule,
     ToastrModule.forRoot(),
     FormsModule,
     DataTablesModule,

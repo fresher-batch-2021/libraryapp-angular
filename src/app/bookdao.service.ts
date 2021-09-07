@@ -21,11 +21,10 @@ export class BookdaoService {
 
   }
   findAll(dbName: any) {
-   // const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
-   const url = this.baseUrl + "/" + dbName + "/_find";
+    const url = this.baseUrl + "/" + dbName + "/_find";
     let selector = {
-      selector : {},
-      sort : ["bookName"]
+      selector: {},
+      sort: ["bookName"]
     }
     return this.http.post(url, selector)
 
@@ -37,28 +36,28 @@ export class BookdaoService {
   }
   updateBook(dbName: any, inputData: any) {
 
-      //3. Update 
-      const url = this.baseUrl + "/" + dbName + "/" + inputData._id ;
-      console.log(url);
+    //3. Update 
+    const url = this.baseUrl + "/" + dbName + "/" + inputData._id;
+    console.log(url);
 
-      return this.http.put(url, inputData);
+    return this.http.put(url, inputData);
 
   }
-   deleteOne(dbName:any, bookObj:any) {
-    
-    const url = this.baseUrl + '/' + dbName + '/' + bookObj._id + "?rev="+ bookObj._rev;
+  deleteOne(dbName: any, bookObj: any) {
+
+    const url = this.baseUrl + '/' + dbName + '/' + bookObj._id + "?rev=" + bookObj._rev;
     console.log(url)
-  return this.http.delete(url)
-}
- findBook(dbName:any, bookName:any) {
-  const url = this.baseUrl + "/" + dbName + "/_find";
-  console.log(url);
-  let criteria = {
-      selector: {
-          bookName: bookName.bookName
-      }
+    return this.http.delete(url)
   }
-  console.log(criteria)
-return this.http.post(url, criteria);
-}
+  findBook(dbName: any, bookName: any) {
+    const url = this.baseUrl + "/" + dbName + "/_find";
+    console.log(url);
+    let criteria = {
+      selector: {
+        bookName: bookName.bookName
+      }
+    }
+    console.log(criteria)
+    return this.http.post(url, criteria);
+  }
 }
