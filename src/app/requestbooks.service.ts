@@ -6,7 +6,7 @@ import { RequestService } from './request.service';
 })
 export class RequestbooksService {
   collectionName = 'libraryapp_requests'
-  constructor(private http: HttpClient, private requestService: RequestService) { }
+  constructor( private requestService: RequestService) { }
   allRequests() {
     return this.requestService.findAll(this.collectionName)
   }

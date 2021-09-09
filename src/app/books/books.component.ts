@@ -43,13 +43,14 @@ export class BooksComponent implements OnInit {
       console.log(this.book)
       this.dtTrigger.next();
 
-      setTimeout(() => {
-        this.spinner.hide();
-      }, 2000)
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 1000)
+
 
     }), ((err: any) => { this.toastr.error(err) })
   }
-  updateBookStatus(book: Book, status: any) {
+  updateBookStatus(book: Book, status: string) {
     const bookObj = { book, status: status }
     this.bookService.updateBookStatus(bookObj).subscribe((res: any) => {
       console.log(res)
@@ -72,9 +73,7 @@ export class BooksComponent implements OnInit {
           setTimeout(() => {
             this.router.navigate(["home-page"]);
           }, 2000);
-        },
-          ((err: any) => {
-            console.error(err);
+        },((err: any) => {
             this.toastr.error("Error  - Unable to delete");
           }));
 

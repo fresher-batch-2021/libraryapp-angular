@@ -13,6 +13,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
 import { DataTablesModule } from "angular-datatables";
 import { InterceptorsService } from './interceptors.service';
+import { ViewbookComponent } from './viewbook/viewbook.component';
+import { ErrorInterceptor } from './error.interceptor';
+import { OrderreportComponent } from './orderreport/orderreport.component';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [
@@ -22,6 +30,8 @@ import { InterceptorsService } from './interceptors.service';
     InitialpageComponent,
     ListUsersComponent,
     RequestedBooksComponent,
+    ViewbookComponent,
+    OrderreportComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +41,14 @@ import { InterceptorsService } from './interceptors.service';
     AppRoutingModule,
     HttpClientModule,
     DataTablesModule,
+    GoogleChartsModule,
+    MatSliderModule,
+    MatButtonModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorsService, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorsService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@ export class User {
 export class Book {
 
     _id!: string;
-    rev!: string;
+    _rev!: string;
     bookName!: string;
     authorName!: string;
     price!: number;
@@ -16,7 +16,7 @@ export class Book {
     image!: string;
     description!: string;
     user!: User;
-    totalRequests!: [];
+    totalRequests!:[];
 
     setData(bookData: any) {
         this.bookName = bookData.bookName;

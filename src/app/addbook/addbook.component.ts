@@ -75,10 +75,10 @@ export class AddbookComponent implements OnInit {
             setTimeout(() => {
               this.router.navigate(["books"]);
             }, 1000);
-          }), ((err: any) => this.toastr.error(err.response))
+          }, ((err: any) => this.toastr.error(err.response)))
         } else {
           this.toastr.warning("Book Already Exists")
-        }
+        }1
       })
       console.log(JSON.stringify(bookDetails));
 

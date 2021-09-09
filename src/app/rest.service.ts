@@ -12,14 +12,14 @@ export class RestService {
 
     this.baseUrl = environment.baseUrl;
   }
-  query(dbName: any, selector: any) {
+  query(dbName: string, selector: any) {
     const url = this.baseUrl + "/" + dbName + "/_find";
     console.log(url);
     console.log(JSON.stringify(selector));
 
     return this.http.post(url, selector);
   }
-  findAll(dbName: any) {
+  findAll(dbName: string) {
 
     const url = this.baseUrl + "/" + dbName + "/_all_docs?include_docs=true";
     console.log(url);

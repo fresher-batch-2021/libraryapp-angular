@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         console.log(user)
         this.toastr.success('login success');
         setTimeout(() => {
-          this.router.navigate(['initial-page']);
+          this.router.navigate(['home-page']);
         }, 2000)
 
       }), ((err: any) => {

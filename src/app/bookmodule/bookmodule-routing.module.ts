@@ -6,7 +6,6 @@ import { AuthguardGuard } from '../authguard.guard';
 import { BooksComponent } from '../books/books.component';
 import { EditbookComponent } from '../editbook/editbook.component';
 import { RoleGuard } from '../role.guard';
-import { NgxSpinnerModule } from "ngx-spinner";
 
 
 const routes: Routes = [
@@ -18,6 +17,7 @@ const routes: Routes = [
     path: ":id",
     children: [
       { path: 'edit', component: EditbookComponent, canActivate: [AuthguardGuard] }
+
     ]
   },
 
