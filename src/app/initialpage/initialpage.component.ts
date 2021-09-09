@@ -23,7 +23,7 @@ export class InitialpageComponent implements OnInit {
       console.log(res)
       this.book = res.docs;
       console.log(this.book)
-    }), ((err: any) => { alert(err.data) })
+    }, ((err: any) => { alert(err.data) }));
   }
 }
 

@@ -35,7 +35,7 @@ export class EditbookComponent implements OnInit {
       this.toastr.success('updated book')
       this.router.navigate(["books"]);
 
-    }), ((err: any) => this.toastr.error("Enter the correct details"))
+    }, ((err: any) => this.toastr.error("Enter the correct details")));
   }
 
   book!: Book;
@@ -45,7 +45,7 @@ export class EditbookComponent implements OnInit {
     this.bookService.getBookById(this.bookId).subscribe((res: any) => {
       console.log(res)
       this.book = res;
-    }), ((err: any) => this.toastr.error("book not found"))
+    }, ((err: any) => this.toastr.error("book not found")));
   }
 }
 

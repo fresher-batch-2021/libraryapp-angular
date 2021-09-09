@@ -31,9 +31,7 @@ export class ListUsersComponent implements OnInit {
     this.userService.usersLists().subscribe((res: any) => {
       this.dtTrigger.next();
       this.users = res.rows.map((obj: any) => obj.doc)
-    }
-
-    ), ((error: any) => console.error({ error: error.message }))
+    }, ((error: any) => console.error({ error: error.message })));
   }
 
 }

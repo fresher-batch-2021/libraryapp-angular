@@ -48,7 +48,7 @@ export class BooksComponent implements OnInit {
         }, 1000)
 
 
-    }), ((err: any) => { this.toastr.error(err) })
+    }, ((err: any) => { this.toastr.error(err) }))
   }
   updateBookStatus(book: Book, status: string) {
     const bookObj = { book, status: status }

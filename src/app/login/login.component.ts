@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home-page']);
         }, 2000)
 
-      }), ((err: any) => {
+      }, ((err: any) => {
         this.toastr.error("Invalid email or password");
-      })
+      }));
     }
   }
 }
