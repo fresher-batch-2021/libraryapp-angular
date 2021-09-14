@@ -1,0 +1,11 @@
+Book Details
+
+<div *ngIf="action == 'edit'">
+
+    <app-editbook [book]="book" *ngIf="book" (updateEvent)="afterBookUpdate($event)"></app-editbook>
+</div>
+
+<div *ngIf="action == 'view'">
+    <app-viewbook [book]="book" *ngIf="book"></app-viewbook>
+
+</div>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Book } from '../book'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addbook',
@@ -11,7 +12,9 @@ import { Book } from '../book'
 })
 export class AddbookComponent implements OnInit {
 
-  constructor(private toastr: ToastrService, private bookService: BooksService, private router: Router) { }
+  constructor(private  dialogRef:  MatDialogRef<AddbookComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any
+
+  ,private toastr: ToastrService, private bookService: BooksService, private router: Router) { }
   ngOnInit(): void {
   }
   bookName: string = "";
@@ -74,7 +77,9 @@ export class AddbookComponent implements OnInit {
             this.toastr.success("book added successfully")
             setTimeout(() => {
               this.router.navigate(["books"]);
+              this.dialogRef.close();
             }, 1000);
+            
           }, ((err: any) => this.toastr.error(err.response)))
         } else {
           this.toastr.warning("Book Already Exists")

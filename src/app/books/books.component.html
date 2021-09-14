@@ -1,4 +1,4 @@
-<div>
+<div appDirectives>
     <div class="search">
         <!-- <input type="text" class="search-input" name="bookName" id="search" [(ngModel)]="bookName" placeholder="Search..." autocomplete="off"> -->
         <!-- <button type="button" class="search-button" (click)="search()">Search</button>
@@ -43,12 +43,12 @@
 
     <div class='orderbooks'>
         <a routerLink="all-orders" class="books-a">
-            <button class="order-button">Ordered Books</button>
+            <button mat-raised-button color="accent">Ordered Book</button>
         </a>
-        <a routerLink="add-book" class="books-a">
-            <button class="order-button">Add book</button>
+        <!-- <a routerLink="add-book" class="books-a"> -->
+            <button mat-raised-button color="accent" (click)="addbooks()">Add Book</button>
 
-        </a>
+        <!-- </a> -->
 
     </div>
 </div>

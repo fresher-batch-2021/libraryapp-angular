@@ -1,4 +1,4 @@
-<header id='header'>
+<header id='header' >
         <nav class='navbar' >
                 <a class='logo' routerLink="home-page" *ngIf="!isLoggedIn">Library</a>
                 <a class='nav-item' routerLink="login" *ngIf="!isLoggedIn">Login</a>
@@ -10,4 +10,14 @@
                 <a routerLink="login" class='nav-items' *ngIf="isLoggedIn" (click)="logout()">logout</a>
 
         </nav>
+        <!-- <div>
+                <input type="radio" name="colors" (click)="color='lightgreen'">Green
+                <input type="radio" name="colors" (click)="color='yellow'">Yellow
+                <input type="radio" name="colors" (click)="color='cyan'">Cyan
+              </div>
+              <p [appDirectives]="color" defaultColor="violet">Highlight me!</p> -->
+              <!-- <label for="item-input">Add an item:</label>
+<input type="text" id="item-input" #newItem>
+<button (click)="addNewItem(newItem.value)">Add to parent's list</button> -->
+
 </header>

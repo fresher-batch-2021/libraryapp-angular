@@ -21,6 +21,7 @@ const routes: Routes = [
     path: 'books',
     loadChildren: () => import('./bookmodule/bookmodule.module').then(m => m.BookmoduleModule)
   },
+  
   {path:':id',
 children:[
   {path:'viewbook',component:ViewbookComponent,canActivate:[AuthguardGuard,RoleGuard]}

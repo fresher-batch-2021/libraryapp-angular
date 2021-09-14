@@ -7,6 +7,8 @@ import { Router } from '@angular/router'
 import { Subject } from 'rxjs';
 import { Book } from '../book';
 import { NgxSpinnerService } from "ngx-spinner";
+import { MatDialog } from '@angular/material/dialog';
+import { AddbookComponent } from '../addbook/addbook.component';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class BooksComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
 
 
-  constructor(private toastr: ToastrService, private bookService: BooksService, private orderService: OrdersService, private router: Router, private spinner: NgxSpinnerService) {
+  constructor(private dialog:MatDialog,private toastr: ToastrService, private bookService: BooksService, private orderService: OrdersService, private router: Router, private spinner: NgxSpinnerService) {
     console.log("Books component");
   }
 
@@ -56,6 +58,10 @@ export class BooksComponent implements OnInit {
       console.log(res)
       this.router.navigate(["books"]);
     })
+
+  }
+  addbooks(){
+    this.dialog.open(AddbookComponent),{panelClass:"add-book-modal"}
 
   }
   deleteBook(book: Book) {

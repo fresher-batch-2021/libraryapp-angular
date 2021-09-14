@@ -1,12 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
+  
 })
 export class HeaderComponent implements OnInit {
+  color = '';
+  
+  @Output() newItemEvent = new EventEmitter<any>();
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
 
   constructor(private router: Router) { }
 
@@ -22,6 +29,7 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = true;
     }
   }
+
   logout() {
     localStorage.removeItem('user');
     this.router.navigate(["login"])
