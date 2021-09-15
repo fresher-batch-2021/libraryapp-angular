@@ -1,4 +1,9 @@
-// @import '~ngx-toastr/toastr';
+@import '~ngx-toastr/toastr';
+
+@color:black;
+@display:flex;
+@cursor:pointer;
+@backgroundColor:white;
 body{
     background-color: cornflowerblue;
 }
@@ -7,24 +12,24 @@ body{
     font-size:20px;
     padding: 15px 5px;
     text-decoration: none;
-    color:white;
+    color:@backgroundColor;
 }
 .logo{
     margin-left:10px;
     padding: 8px;
     border:3px;
     text-decoration: none;
-    color:black;
+    color:@color;
 
 }
 .logo:hover{
-    color:black;
+    color:@color;
     border-radius:3px;
-    background-color:#f1f1f1;
+    background-color:@backgroundColor;
 
 }
 .nav-item{
-    color:black;
+    color:@color;
     border:3px;
     margin-left:46rem;
     text-decoration: none;
@@ -32,26 +37,26 @@ body{
 
     } 
     .nav-item:hover{
-        color:black;
-        background-color:#f1f1f1;
+        color:@color;
+        background-color:@backgroundColor;
         border-radius: 0;
     }
     .nav-items{
         padding:8px;
-        color:black;
+        color:@color;
         margin-left:50px;
         text-decoration: none;
 
     }
     .nav-items:hover{
-        color:black;
-        background-color:#f1f1f1;
+        color:@color;
+        background-color:@backgroundColor;
         transition:0.5s;
     }
 
     /* registerpage */
     .register-card{
-        background-color:#f1f1f1;
+        background-color:@backgroundColor;
 
     }
     .register-container{
@@ -59,10 +64,10 @@ body{
         max-width: 300px;
         padding:60px;
         border-radius: 6px;
-        background-color: #cccccc;
+        background-color: @backgroundColor;
     }
     .register-h1{
-        display: flex;
+        display: @display;
         justify-content: center;
     }
     .register-input{
@@ -82,16 +87,16 @@ body{
     }
     .register-button{
         background-color: #0e0cad;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  margin:20px 2px 0 50px;
-  cursor: pointer;
-  width:70%;
-border-radius:28px;
+        border: none;
+        color: @backgroundColor;
+        padding: 16px 32px;
+        margin:20px 2px 0 50px;
+        cursor: @cursor;
+        width:70%;
+        border-radius:28px;
     }
     .register-a{
-        display: flex;
+        display: @display;
         justify-content: center;
         text-decoration: none;
         margin-top:15px;
@@ -106,10 +111,10 @@ border-radius:28px;
     align-items: center;
     padding:70px;
     border-radius: 6px;
-    background-color: #cccccc;
+    background-color: @backgroundColor;
 }
 .login-h1{
-    display: flex;
+    display: @display;
     justify-content: center;
 }
 .login-input{
@@ -127,10 +132,10 @@ border-radius:28px;
 .login-button{
     background-color: #0e0cad;
 border: none;
-color: white;
+color: @backgroundColor;
 padding: 16px 32px;
 margin:20px 2px 0 5px;
-cursor: pointer;
+cursor: @cursor;
 width:100%;
 border-radius:28px;
 }
@@ -140,22 +145,22 @@ border-radius:28px;
     padding:10px;
     border:none;
     border-radius:5px;
-    background-color: #cccccc;
-    color:black;
-cursor: pointer;
-margin:5px;
+    background-color: @backgroundColor;
+    color:@color;
+    cursor: @cursor;
+    margin:5px;
 }
 .reset-button{
     padding:10px;
     border:none;
     border-radius:5px;
-    background-color: #cccccc;
-    color:black;
-cursor: pointer;
-margin:5px;
+    background-color: @backgroundColor;
+    color:@color;
+    cursor: @cursor;
+    margin:5px;
 }
 .books {
-    display: flex;
+    display: @display;
     justify-content: center;
 }
 
@@ -186,7 +191,7 @@ tr:nth-child(even) {
 
 th {
     background-color: rgb(4, 90, 170);
-    color: white;
+    color: @backgroundColor;
     border: 1px solid;
     border-collapse: collapse;
     padding: 10px;
@@ -195,7 +200,7 @@ th {
 
 .order-button {
     padding: 10px;
-    cursor: pointer;
+    cursor: @cursor;
     border-radius: 5px;
     border: none;
     text-transform: capitalize;
@@ -215,7 +220,7 @@ th {
 
 }
 a{
-    color:black;
+    color:@color;
     text-decoration: none;
 }
 
@@ -240,20 +245,20 @@ caption {
     margin-top:100px; 
 }
 .delete-book-button{
-    cursor: pointer;
+    cursor: @cursor;
     padding: 5px;
     border:none;
-    border-radius:5px black;
-    background-color: #cccccc;
-    color:black;
+    border-radius:5px @color;
+    background-color: @backgroundColor;
+    color:@color;
 }
 .status-button{
-    cursor: pointer;
+    cursor: @cursor;
     padding: 5px;
     border:none;
-    border-radius:5px black;
-    background-color: #cccccc;
-    color:black;
+    border-radius:5px @color;
+    background-color: @backgroundColor;
+    color:@color;
     
 }
 /* initialpage */
@@ -290,7 +295,7 @@ caption {
 
 /* orderpage */
 .order-div1{
-    display: flex;
+    display: @display;
     justify-content: center;
     align-items: center;
     margin-right:400px;
@@ -309,50 +314,69 @@ caption {
 .placeorder-button{
     padding:10px;
     background-color: blue;
-    color:white;
-    cursor:pointer;
+    color:@backgroundColor;
+    cursor:@cursor;
     margin-top:40px;
 }
 
 /* addbook */
 .book-container{
     /* margin-left: 200px; */
-    /* display: flex; */
+    /* display: @display; */
     justify-content: center;
-   /* background-color: #cccccc;   */
+   /* background-color: @backgroundColor;   */
    border:1px solid;
    padding: 20px;
    /* width:60%; */
    
 }
 .add-book-h1{
-    display: flex;
+    display: @display;
     justify-content: center;
 }
 .add-book{
 
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .add-book-label{
+    margin-top: 1%;
     margin-bottom:20px;
+    margin-left: 30%;
 }
 .add-book-input {
- padding: 1%;
- margin-bottom: 1%;
+ padding: 5%;
+ margin-bottom: 15%;
+
 }
 
 
-.add-book-button {
-    margin:40px 0 0 100px;
-    padding: 15px;
-    cursor: pointer;
-    color:white;
+.add-book-button1 {
+
+    border-radius:10px;
+    border:none;
+    margin-top: 10%;
+    margin-left: 73%;
+    cursor: @cursor;
+    color: @backgroundColor;
     background-color: blue;
-    width:50%;
-    border-radius:28px;
-    border:none
+    padding: 5%;
+    height: max-content;
 }
+.add-book-button2 {
+
+    border-radius:10px;
+    border:none;
+    margin-top: 10%;
+    margin-left: 10%;
+    cursor: @cursor;
+    color: @backgroundColor;
+    background-color: blue;
+    padding: 5%;
+    height: max-content;
+}
+
+
 .add-book-button:hover{
     color:blue;
     background-color: rgb(225, 225, 231);
@@ -361,8 +385,8 @@ textarea{
     resize:none;
 }
 .add-book-textarea{
-    display: inline-block;
-    justify-content: center;
+    display: @display;
+    // justify-content: center;
     border:none;
 
 }
@@ -372,24 +396,24 @@ textarea{
     box-shadow: 0 0 10px #719ECE;  
 }
 .addbook-button{
-    display: flex;
+    display: @display;
 }
 .accept-button{
     margin-right:5px;
-    cursor: pointer;
+    cursor: @cursor;
     padding: 5px;
     border:none;
-    border-radius:5px black;
-    background-color: #cccccc;
-    color:black;
+    border-radius:5px @color;
+    background-color: @backgroundColor;
+    color:@color;
 }
 .reject-button{
-    cursor: pointer;
+    cursor: @cursor;
     padding: 5px;
     border:none;
-    border-radius:5px black;
-    background-color: #cccccc;
-    color:black;
+    border-radius:5px @color;
+    background-color: @backgroundColor;
+    color:@color;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
