@@ -61,7 +61,7 @@ export class BooksComponent implements OnInit {
 
   }
   addbooks(){
-    this.dialog.open(AddbookComponent),{panelClass:"add-book-modal"}
+    this.dialog.open(AddbookComponent);{panelClass:"add-book-modal"}
 
   }
   deleteBook(book: Book) {

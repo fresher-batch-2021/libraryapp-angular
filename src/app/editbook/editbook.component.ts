@@ -28,7 +28,7 @@ export class EditbookComponent implements OnInit {
       console.log(res)
       this.toastr.success('updated book')
       this.updateEvent.emit("Updated");
-    //  this.router.navigate(["books"]);
+     this.router.navigate(["books"]);
 
     }, ((err: any) => this.toastr.error("Enter the correct details")));
   }
